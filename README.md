@@ -2,138 +2,253 @@
 
 # AI Continuity Kit
 
-### A lightweight, Git-backed continuity layer for ChatGPT and Codex
+### Give ChatGPT and Codex continuity — without letting old memory become false truth.
 
-**Keep useful context. Separate memory from truth. Continue projects without rebuilding everything from chat history.**
+**A lightweight, Git-backed layer for AI memory, context engineering, personal knowledge, and long-running projects.**
 
-[Quick start](docs/QUICKSTART.md) · [Core model](docs/CORE_MODEL.md) · [Architecture](docs/ARCHITECTURE.md) · [Русский](README.ru.md)
+[⚡ 5-minute start](docs/QUICKSTART.md) · [🧠 See the model](docs/CORE_MODEL.md) · [💡 Use cases](docs/USE_CASES.md) · [⚖️ Compare approaches](docs/COMPARISON.md) · [🇷🇺 Русский](README.ru.md)
 
-![Status](https://img.shields.io/badge/status-v0.1%20preview-blue)
+![Status](https://img.shields.io/badge/status-v0.2%20preview-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Dependencies](https://img.shields.io/badge/runtime-dependencies-none-brightgreen)
+![Runtime](https://img.shields.io/badge/runtime-dependencies-none-brightgreen)
+![Privacy](https://img.shields.io/badge/personal%20data-private%20repo-important)
 
 </div>
 
 ---
 
-## Why this exists
+## The problem in 20 seconds
 
-AI assistants can remember useful things, but **memory is not the same as verified truth**.
+You use ChatGPT or Codex for weeks or months. Then one of these happens:
 
-A preference can be durable. A server IP can change. A project decision can be superseded. A successful test from last month does not prove the system is healthy today.
+- the assistant **forgets an important decision**;
+- it remembers something that **used to be true but is stale now**;
+- the project is scattered across chats, notes, files, and agent memory;
+- a new session has to **reconstruct everything from scratch**;
+- an agent has technical access, but nobody clearly defined **what it is actually allowed to change**.
 
-AI Continuity Kit gives a human and their AI assistants a small shared structure for keeping those things separate.
+AI Continuity Kit gives you a small, inspectable continuity layer so the AI can answer three questions before acting:
+
+> **What do we know? What is current? What am I allowed to do?**
+
+No vector database. No background service. No agent framework. Start with plain Markdown and Git.
+
+---
+
+## What changes for you
+
+| Before | With AI Continuity Kit |
+|---|---|
+| “I think we discussed this somewhere.” | Decisions have an explicit home. |
+| Old chat memory quietly becomes “truth.” | Mutable facts can require a freshness check. |
+| Every new session gets a giant context dump. | The assistant loads only the relevant route. |
+| Projects live inside conversation history. | Current state survives the conversation. |
+| Useful lessons are mixed with current facts. | Memory and verified facts are separate. |
+| Broad agent access feels like broad permission. | Technical access and authorization are separate. |
+
+The goal is not more documentation. The goal is **less reconstruction, less stale context, and safer continuation**.
+
+---
+
+## See it in one example
+
+Imagine a project originally used Provider A. Two months later you migrated to Provider B.
+
+A normal memory system may still surface “Provider A” because it was once important.
+
+With this model:
 
 ```text
-MESSAGE
-  ↓
-ROUTE TO THE RIGHT CONTEXT
-  ↓
-CHECK WHAT IS CURRENT
-  ↓
-WORK
-  ↓
-VERIFY
-  ↓
-SAVE ONLY THE USEFUL DELTA
+PROJECT_STATE.md   → migration complete; Provider B is current
+PROJECT_FACTS.md   → Provider B, last verified 2026-08-16
+PROJECT_MEMORY.md  → Provider A caused a useful past failure pattern
+EVIDENCE/          → dated proof of the migration test
 ```
 
-It is intentionally **not** a database, vector store, autonomous agent platform, or transcript archive.
+The old information is not deleted. It is simply **not allowed to impersonate current reality**.
 
-## The six ideas
+That distinction is the core of the project.
 
-1. **Memory is not truth.** Lessons and preferences can guide future work, but mutable facts need freshness.
-2. **One fact, one owner.** Avoid multiple files that independently claim the same current state.
-3. **Load only what matters.** Do not stuff every project, log, and old conversation into every prompt.
-4. **Keep deltas, not transcripts.** Save decisions, verified state, blockers, and lessons—not conversational noise.
-5. **Human language first.** The person should be able to ask “what is happening with my project?” without knowing the internal file layout.
-6. **Technical access is not permission.** Codex or another agent having broad access does not mean every action is authorized.
+---
 
-## What it looks like
+## Try it in 5 minutes
+
+The ready-to-copy template is in [`starter/`](starter/).
+
+### 1. Copy the starter into a private repository
+
+Your real personal context should normally be private.
+
+### 2. Fill only three small things
+
+- `context/PREFERENCES.md` — how you prefer to work;
+- `context/FACTS.md` — durable facts worth reusing;
+- one project `STATE.md` — only if you actually have a continuing project.
+
+### 3. Paste one instruction to your AI
+
+Use [`starter/BOOTSTRAP_PROMPT.md`](starter/BOOTSTRAP_PROMPT.md), or simply say:
+
+> Start with `START.md`. Load only the context needed for my request. Treat mutable facts as stale when freshness matters. After substantial work, save only reusable confirmed delta.
+
+Then ask something normal, for example:
+
+> “What is the current state of my project and what should I do next?”
+
+You do **not** need to memorize the file structure. The structure exists so the assistant can be more reliable.
+
+Full walkthrough: [5-minute quick start](docs/QUICKSTART.md).
+
+---
+
+## The continuity loop
 
 ```mermaid
 flowchart LR
-    H[Human] --> C[ChatGPT / Coordinator]
-    H --> X[Codex / Executor]
-    C --> S[START]
-    X --> S
-    S --> R{Route}
-    R --> P[Personal context]
-    R --> J[Project state]
-    R --> F[Verified facts]
-    R --> M[Memory / lessons]
-    R --> E[Evidence]
-    J --> V[Freshness check]
-    F --> V
-    V --> W[Work]
-    W --> Q[Verify]
+    H[Human request] --> R{Route}
+    R --> C[Relevant context]
+    C --> F{Fresh enough?}
+    F -->|yes| W[Work]
+    F -->|no| V[Verify current reality]
+    V --> W
+    W --> Q[Check result]
     Q --> D[Capture useful delta]
+    D --> N[Next session continues]
 ```
 
-## Three levels of use
+**Core rule:**
 
-| Level | For | What you use |
+```text
+ROUTE → OWNER → FRESHNESS CHECK → WORK → VERIFY → CAPTURE DELTA
+```
+
+---
+
+## Six ideas that make it different
+
+1. **Memory is not truth.** A useful lesson can survive for years; a server address may be stale tomorrow.
+2. **One fact, one owner.** Avoid several files independently claiming the same current state.
+3. **Progressive disclosure.** Load only the context needed for the current task.
+4. **Keep deltas, not transcripts.** Save decisions, verified state, blockers, and lessons — not conversational noise.
+5. **Human language first.** The user asks normal questions; the assistant handles routing.
+6. **Technical access is not permission.** An agent having write access does not mean every write is authorized.
+
+---
+
+## Three levels — start small
+
+| Level | Best for | Add |
 |---|---|---|
-| **Lite** | Everyday ChatGPT use | preferences + a few durable facts + memory rules |
-| **Standard** | Personal/work projects | state + facts + memory + decisions + evidence |
-| **Advanced** | Codex / agents / operations | permissions, action gates, recovery, CI, multiple repositories |
+| **Lite** | Everyday ChatGPT use | preferences, durable facts, memory rules |
+| **Standard** | Personal/work projects | state, facts, decisions, memory, dated evidence |
+| **Advanced** | Codex / agents / operations | action gates, permissions, recovery, CI, multiple repositories |
 
-Start with Lite. Add structure only when a real problem requires it.
+**Do not start with Advanced.** Add structure only when a real recurring problem justifies it.
 
-## Quick start
+---
 
-The ready-to-copy template lives in [`starter/`](starter/).
+## Is this another “second brain”?
 
-1. Put it in a **private** Git repository for your own data.
-2. Edit `context/PREFERENCES.md` and `context/FACTS.md` conservatively.
-3. Tell your AI assistant to begin with `START.md`.
-4. Create a project only when something has durable state worth continuing.
-5. Commit meaningful changes so you can see who changed what and recover old versions.
+Not exactly.
 
-See the full [5-minute quick start](docs/QUICKSTART.md).
+A second brain usually focuses on **collecting and retrieving knowledge**. AI Continuity Kit focuses on **continuing work without confusing memory, history, plans, and current truth**.
 
-> **Privacy:** this repository is a public template. Your real personal context should normally live in a private repository. Never commit passwords, tokens, private keys, cookies, or secret-bearing configuration.
+It can complement:
 
-## What belongs where?
+- ChatGPT Memory;
+- Codex project instructions;
+- an Obsidian vault;
+- a RAG/vector database;
+- a personal AI assistant;
+- an existing project repository.
 
-| Information | Home |
-|---|---|
-| “Answer me concisely, then expand if needed.” | Preferences |
-| “My laptop has 32 GB RAM.” | Facts, with verification date if it may change |
-| “We chose PostgreSQL for this project.” | Project decision |
-| “Deployment is blocked by DNS.” | Project state |
-| “Last time this error meant the service had lost its config mount.” | Memory / lesson |
-| “Test passed on 2026-08-16.” | Dated evidence |
-| Password / API token / private key | **Not Git** |
+See [Comparison: native memory vs second brain vs RAG vs continuity layer](docs/COMPARISON.md).
+
+---
+
+## Good use cases
+
+- keeping ChatGPT preferences without turning them into a biography dump;
+- continuing a project across many conversations;
+- keeping current facts separate from historical evidence;
+- handing work between ChatGPT and Codex;
+- preserving decisions and the reason behind them;
+- remembering useful failure/recovery patterns;
+- controlling what an agent may change when it has broad technical access.
+
+See [realistic examples](docs/USE_CASES.md).
+
+---
+
+## Privacy and safety
+
+This repository is a **public template**. Your actual continuity repository should usually be **private**.
+
+Never commit real passwords, tokens, private keys, cookies, session state, `.env` values, or secret-bearing configuration. Keep a safe pointer or variable name instead.
+
+Also remember: a dated test proves what was true **at that time**. It does not automatically prove current runtime state.
+
+Read [`SECURITY.md`](SECURITY.md).
+
+---
+
+## Who this is for
+
+This project is useful if you think:
+
+- “I want my AI to remember, but I also want to know **why I should trust what it remembers**.”
+- “I keep rebuilding project context in new chats.”
+- “I want ChatGPT and Codex to share a durable working model without stuffing everything into every prompt.”
+- “I want something inspectable and editable by a human.”
+
+It is probably **not** for you if you only need casual chat, or if you already have a mature knowledge/agent platform that solves freshness, ownership, continuity, and permissions well enough.
+
+---
 
 ## What this project is not
 
 - Not a replacement for ChatGPT Memory.
 - Not a replacement for Codex project instructions.
-- Not a claim that Markdown is a database.
-- Not an automatic source of current runtime truth.
-- Not a reason to save every conversation.
+- Not a vector database or RAG engine.
+- Not a transcript archive.
+- Not a claim that Markdown is always the right database.
 - Not an excuse to turn everyday life into process bureaucracy.
 
-Use native assistant memory for adaptive personalization when it fits. Use this kit for **explicit, inspectable, versioned continuity**.
+The smallest useful system wins.
 
-## Design goal
+---
 
-The ideal experience is boring:
+## Explore
 
-> You speak normally. The assistant finds the right context, checks whether it is still trustworthy, does the work, verifies the result, and records only what will actually help next time.
+- [Quick start](docs/QUICKSTART.md)
+- [Core model](docs/CORE_MODEL.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Use cases](docs/USE_CASES.md)
+- [Comparison](docs/COMPARISON.md)
+- [FAQ](docs/FAQ.md)
+- [Examples](examples/README.md)
+- [Roadmap](ROADMAP.md)
+- [Starter template](starter/)
+
+---
 
 ## Project status
 
-**v0.1 preview.** The core model and starter template are usable, but the project is intentionally small while real-world workflows are validated.
+**v0.2 preview.** The model is intentionally lightweight while real-world workflows are validated.
 
-Planned directions include:
+The next goal is not “more files.” It is a smoother path from:
 
-- lighter everyday interaction patterns;
-- measurable context-budget guardrails;
-- agent permission envelopes;
-- optional structure validation;
-- migration guides from ad-hoc prompt/memory folders.
+```text
+I just found this repo
+        ↓
+I understand why I need it
+        ↓
+I get my first useful result
+        ↓
+I keep using it because it reduces friction
+```
+
+Contributions and real-world failure cases are welcome. See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Independent project
 
