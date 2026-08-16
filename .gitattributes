@@ -1,0 +1,3 @@
+# Keep the public repository presentation accurate.
+# The validator is an implementation detail, not the project's primary language.
+tools/validate.py -linguist-detectable
