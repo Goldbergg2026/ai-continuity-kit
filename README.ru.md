@@ -118,6 +118,9 @@ EVIDENCE/          → датированное доказательство т�
 
 Подробнее: [старт за 5 минут](docs/QUICKSTART.ru.md).
 
+> [!TIP]
+> **Проверено в обычном ChatGPT в веб-версии.** В реальной конфигурации, где GitHub App был доступен, постоянная Пользовательская инструкция с указанием `repo/main/START.md` позволяла обычному ChatGPT входить в репозиторий, следовать его маршрутам и загружать нужные continuity-файлы — без Codex, ChatGPT Work и отдельного API-runtime. Доступность GitHub зависит от тарифа и режима, поэтому это подтверждённая совместимость, а не гарантия для всех аккаунтов. [Точная схема настройки →](docs/CHATGPT-WEB.ru.md)
+
 ---
 
 ## Цикл непрерывности
@@ -246,6 +249,7 @@ ROUTE → OWNER → FRESHNESS CHECK → WORK → VERIFY → CAPTURE DELTA
 ## Что посмотреть дальше
 
 - [Быстрый старт](docs/QUICKSTART.ru.md)
+- [Обычный ChatGPT в веб-версии + GitHub](docs/CHATGPT-WEB.ru.md)
 - [Core model](docs/CORE_MODEL.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Сценарии](docs/USE_CASES.md)

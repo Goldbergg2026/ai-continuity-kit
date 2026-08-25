@@ -99,6 +99,9 @@ You do **not** need to memorize the file structure. The structure exists so the 
 
 Full walkthrough: [5-minute quick start](docs/QUICKSTART.md).
 
+> [!TIP]
+> **Field-tested with ordinary ChatGPT web.** In a real web-chat setup where the GitHub App was available, a persistent Custom Instruction pointing to `repo/main/START.md` let ordinary ChatGPT enter the repository, follow its routes, and load the relevant continuity files — without Codex, ChatGPT Work, or a separate API runtime. GitHub availability varies by plan and experience, so treat this as verified compatibility, not a universal guarantee. [See the exact setup →](docs/CHATGPT-WEB.md)
+
 ---
 
 ## The continuity loop
@@ -221,6 +224,7 @@ The smallest useful system wins.
 ## Explore
 
 - [Quick start](docs/QUICKSTART.md)
+- [Ordinary ChatGPT web + GitHub](docs/CHATGPT-WEB.md)
 - [Core model](docs/CORE_MODEL.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Use cases](docs/USE_CASES.md)
