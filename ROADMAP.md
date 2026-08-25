@@ -2,6 +2,28 @@
 
 AI Continuity Kit should grow only when a real usability or reliability problem justifies the extra structure.
 
+## Product evolution rule — smarter, not heavier
+
+AI Continuity Kit should become more capable without making the ordinary path feel larger, slower, or harder to understand.
+
+The public project therefore follows these rules:
+
+- **Do not release by calendar pressure.** It is acceptable to wait weeks or months while ideas are tested and simplified.
+- **Prefer a few strong improvements over frequent small churn.** A release should normally bundle a small coherent set of validated improvements rather than ship every idea immediately.
+- **Keep Lite simple.** New core functionality must improve usefulness or reliability without materially increasing first-use friction, required reading, context load, runtime dependencies, or maintenance burden.
+- **Make complexity opt-in.** Optional and Advanced capabilities may grow, but they must not become prerequisites for the Lite path.
+- **Promote distilled patterns, not experimental machinery.** New ideas should first prove themselves in real use; the public kit receives the smallest reusable form that preserves the benefit.
+- **A higher version number is not permission for a larger core.** If a feature cannot be added without making the normal experience meaningfully heavier, redesign it, move it behind an optional layer, or leave it out.
+
+The intended direction is simple:
+
+```text
+more useful over time
++ same low-friction entry
++ same understandable core
+= successful evolution
+```
+
 ## Current: v0.2 preview — make the value obvious
 
 Focus:
