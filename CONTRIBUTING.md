@@ -11,4 +11,4 @@ Before proposing a new file, rule, or abstraction, ask:
 
 Good contributions include clearer examples, safer defaults, migration guides, measured context-budget tooling, and small validators that catch real mistakes.
 
-Please keep examples synthetic and free of personal data, credentials, private infrastructure details, or copied proprietary material.
+Please keep examples synthetic and free of personal data, credentials, private infrastructure details, copied proprietary material, chat transcripts, or verbatim private conversations. The public repository is a product-facing template and documentation surface, not a record of private working conversations.
