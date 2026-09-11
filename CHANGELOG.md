@@ -1,35 +1,35 @@
-# Changelog
+# История изменений
 
-All notable changes to AI Continuity Kit are documented here.
+Здесь фиксируются заметные изменения AI Continuity Kit.
 
 ## [0.2.0] - 2026-08-16
 
-### Changed
+### Изменено
 
-- rewrote the public landing page around user pain, concrete value, and first success;
-- made the 5-minute quick start outcome-driven;
-- expanded the Russian landing page to match the new product story.
+- публичная входная страница переписана вокруг реальных проблем пользователя, понятной пользы и первого успешного результата;
+- быстрый старт за 5 минут теперь ориентирован на достигаемый результат;
+- русская входная страница расширена в соответствии с обновлённым описанием продукта.
 
-### Added
+### Добавлено
 
-- copy-paste bootstrap prompt;
-- starter onboarding guide;
-- realistic use cases;
-- comparison with native memory, second-brain tools, RAG, project instructions, and agent frameworks;
-- FAQ covering non-technical onboarding, freshness, Git, privacy, and scope;
-- concrete examples of current vs historical, fact vs memory, evidence, and permission boundaries;
-- public roadmap focused on reducing friction rather than growing the framework.
+- готовый bootstrap prompt для копирования;
+- руководство по первому запуску starter;
+- реалистичные сценарии использования;
+- сравнение с нативной памятью, инструментами «второго мозга», RAG, инструкциями проектов и agent framework;
+- FAQ по первому запуску для нетехнических пользователей, свежести данных, Git, конфиденциальности и границам проекта;
+- конкретные примеры различий между текущим и историческим, фактом и памятью, доказательством и границами разрешений;
+- публичная дорожная карта, ориентированная на уменьшение лишних действий, а не на разрастание framework.
 
 ## [0.1.0] - 2026-08-16
 
-### Added
+### Добавлено
 
-- initial public preview;
-- English and Russian README;
-- core continuity model;
-- architecture and progressive-disclosure guidance;
-- 5-minute quick start;
-- copy-ready starter template;
-- state / facts / memory separation;
-- basic agent permission and safety boundaries;
-- contribution and security guidance.
+- первая публичная предварительная версия;
+- README на английском и русском языках;
+- базовая модель непрерывности;
+- рекомендации по архитектуре и постепенной загрузке контекста;
+- быстрый старт за 5 минут;
+- готовый к копированию starter-шаблон;
+- разделение состояния / фактов / памяти;
+- базовые границы полномочий и безопасности агента;
+- рекомендации по вкладу в проект и безопасности.
