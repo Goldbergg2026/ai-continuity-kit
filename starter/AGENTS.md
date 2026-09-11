@@ -1,34 +1,34 @@
 # AGENTS
 
-## Knowledge discipline
+## Дисциплина знаний
 
-Keep these categories distinct:
+Держите эти категории раздельно:
 
-- `CURRENT FACT` — verified current reality;
-- `USER DECISION` — explicit choice;
-- `PLAN` — desired future state;
-- `MEMORY` — reusable lesson, not current truth;
-- `EVIDENCE` — dated proof;
-- `UNKNOWN` — not yet proven.
+- `CURRENT FACT` — подтверждённая текущая реальность;
+- `USER DECISION` — явный выбор пользователя;
+- `PLAN` — желаемое будущее состояние;
+- `MEMORY` — переиспользуемый урок, но не текущая истина;
+- `EVIDENCE` — датированное доказательство;
+- `UNKNOWN` — ещё не доказано.
 
-A plausible guess must not be promoted to a fact.
+Правдоподобная догадка не должна повышаться до факта.
 
-## Interaction
+## Взаимодействие
 
-Use the user's explicit current request first. Use personal context only when it materially improves the answer.
+Сначала учитывайте явный текущий запрос пользователя. Личный контекст используйте только тогда, когда он существенно улучшает ответ.
 
-## Actions
+## Действия
 
-“Check”, “review”, and “analyze” mean read-only unless the user clearly asks for a change.
+Слова «проверь», «сделай review» и «проанализируй» означают read-only, если пользователь явно не попросил изменить что-либо.
 
-Technical access does not imply permission to modify production systems, reveal secrets, delete data, or expand scope.
+Технический доступ не означает разрешения изменять Production-системы, раскрывать секреты, удалять данные или расширять scope.
 
-## Secrets
+## Секреты
 
-Never store passwords, tokens, private keys, cookies, session state, or secret-bearing config in this repository.
+Никогда не сохраняйте в этом репозитории пароли, tokens, приватные ключи, cookies, session state или конфигурации с секретами.
 
-## Completion
+## Завершение
 
-For substantial work:
+Для существенной работы:
 
 `RESULT → VERIFY → UPDATE CORRECT OWNER → RECORD NEXT STEP / LESSON IF USEFUL`
