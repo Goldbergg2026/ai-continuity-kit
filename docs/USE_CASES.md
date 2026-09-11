@@ -1,47 +1,43 @@
-# Use cases
+# Сценарии использования
 
-AI Continuity Kit is most useful when a conversation is temporary but the work is not.
+AI Continuity Kit особенно полезен, когда отдельный разговор временный, а работа продолжается.
 
-The examples below are intentionally small. The project is not trying to turn every part of life into a knowledge-management system.
+Примеры ниже намеренно небольшие: проект не пытается превращать каждую часть жизни в систему управления знаниями.
 
-## 1. Everyday preferences without a biography dump
+## 1. Повседневные предпочтения без биографического досье
 
-You want an assistant to remember a few stable interaction preferences:
+Вы хотите, чтобы ассистент помнил несколько устойчивых предпочтений взаимодействия:
 
 ```md
 # PREFERENCES
 
-- Prefer a short answer first, then details when useful.
-- Explain unfamiliar technical terms in plain language before using jargon.
-- Do not present ten alternatives when one clearly fits.
+- Сначала короткий ответ, затем подробности, если они полезны.
+- Незнакомые технические термины сначала объяснять простыми словами.
+- Не предлагать десять вариантов, если один явно подходит лучше всего.
 ```
 
-This is different from storing every personal detail you ever mentioned.
+Это не то же самое, что хранить каждую личную деталь, когда-либо упомянутую в разговоре.
 
-**Value:** future conversations feel consistent without requiring a giant personal profile.
+**Польза:** новые диалоги остаются последовательными без огромного персонального профиля.
 
----
+## 2. Проект переживает новые чаты
 
-## 2. A project that survives new chats
+Вы несколько недель делаете сайт, бота, домашнюю лабораторию, исследование или бизнес-процесс.
 
-You are building a website, bot, home lab, research project, or business process over several weeks.
+`STATE.md` отвечает:
 
-`STATE.md` answers:
+- где мы сейчас?
+- что заблокировано?
+- что изменилось недавно?
+- какой точный следующий шаг?
 
-- where are we now?
-- what is blocked?
-- what changed recently?
-- what is the exact next step?
+Новой сессии не нужно заново восстанавливать весь проект из старой истории переписки.
 
-A new session does not need to reconstruct the whole project from old conversation history.
+**Польза:** меньше повторных объяснений и меньше риска случайно вернуться к устаревшему плану.
 
-**Value:** less repeated explanation and less accidental regression to an older plan.
+## 3. Изменяемые факты могут устаревать
 
----
-
-## 3. Mutable facts that can go stale
-
-Some facts are useful but should not be trusted forever:
+Некоторые сведения полезны, но им нельзя доверять вечно:
 
 ```md
 - Hosting provider: Provider B
@@ -49,17 +45,15 @@ Some facts are useful but should not be trusted forever:
 - Recheck after: migration, outage, account change, DNS cutover
 ```
 
-The date is not decoration. It tells the assistant when an old fact may need verification before it affects a decision.
+Дата здесь не украшение. Она помогает понять, когда старый факт нужно перепроверить, прежде чем использовать в решении.
 
-**Value:** memory helps continuity without silently becoming stale runtime truth.
+**Польза:** память помогает непрерывности, но не притворяется текущей runtime-истиной.
 
----
+## 4. Сохранить решение и причину
 
-## 4. Preserve a decision and its reason
+Проект выбирает PostgreSQL вместо SQLite.
 
-A project chooses PostgreSQL instead of SQLite.
-
-Storing only the result can make the decision look arbitrary later. A compact decision record can preserve:
+Если сохранить только результат, позже решение может казаться случайным. Компактная запись может сохранить контекст:
 
 ```text
 Decision: PostgreSQL
@@ -68,86 +62,76 @@ Rejected for now: SQLite
 Revisit when: single-user/offline becomes the dominant use case
 ```
 
-**Value:** future changes can challenge the actual reasoning instead of repeating the same debate from zero.
+**Польза:** будущая переработка может обсуждать реальную причину решения, а не начинать тот же спор с нуля.
 
----
+## 5. Отделить уроки от текущих фактов
 
-## 5. Keep lessons separate from current facts
+Когда-то deployment сломался из-за исчезнувшего configuration mount после пересборки container.
 
-A deployment once failed because a configuration mount disappeared after a container rebuild.
+Это полезно сохранить в `MEMORY.md` как диагностический паттерн.
 
-That belongs in `MEMORY.md` as a reusable diagnostic clue.
+Но это **не** означает, что каждый будущий сбой deployment имеет ту же причину.
 
-It does **not** mean every future deployment failure has the same cause.
+**Польза:** прошлый опыт ускоряет расследование, не превращаясь в безусловный текущий факт.
 
-**Value:** past experience improves investigation without turning a historical pattern into an unquestioned current fact.
+## 6. Передавать работу между ChatGPT и Codex
 
----
+ChatGPT может помочь сформулировать цель, компромиссы и следующие шаги. Codex — реализовать изменения в репозитории.
 
-## 6. Hand work between ChatGPT and Codex
-
-ChatGPT may help define intent, tradeoffs, and next steps. Codex may implement changes in a repository.
-
-A continuity layer gives both tools explicit shared context:
+Слой непрерывности даёт обоим инструментам общий явный контекст:
 
 ```text
-human intent
+цель человека
     ↓
-current project state
+текущее состояние проекта
     ↓
-verified facts
+проверенные факты
     ↓
-allowed action scope
+разрешённый scope действий
     ↓
-implementation
+реализация
     ↓
-verification
+проверка
     ↓
-updated state / reusable lesson
+обновлённое состояние / переиспользуемый урок
 ```
 
-**Value:** the handoff is based on inspectable state rather than one model trying to reconstruct another model's conversation.
+**Польза:** handoff опирается на проверяемое состояние, а не на попытку одной модели восстановить разговор другой модели.
 
----
+## 7. Широкий технический доступ, узкое разрешение
 
-## 7. Broad technical access, narrow permission
+Агент технически может уметь записывать файлы, вызывать API или запускать команды.
 
-An agent may technically be able to write files, call APIs, or run commands.
+Это не означает автоматического разрешения:
 
-That does not automatically mean it is authorized to:
+- удалять данные;
+- выполнять deployment в Production;
+- менять credentials;
+- изменять другой проект;
+- раскрывать приватный репозиторий.
 
-- delete data;
-- deploy to production;
-- rotate credentials;
-- change a different project;
-- expose a private repository.
+Continuity-модель сохраняет различие между **возможностью (`capability`)** и **полномочием (`authorization`)**.
 
-The continuity model can preserve the difference between **capability** and **authorization**.
+**Польза:** меньше случайных побочных эффектов по мере роста возможностей агентных инструментов.
 
-**Value:** fewer accidental side effects when agent tooling becomes more powerful.
+## 8. Хранить evidence, не выдавая его за вечную текущую истину
 
----
+Сегодня тест проходит успешно.
 
-## 8. Evidence without pretending it is forever-current
-
-A test passes today.
-
-Store that as dated evidence:
+Сохраните это как датированное доказательство:
 
 ```text
 2026-08-16 — end-to-end test PASS
 ```
 
-Later, if the system changes, the evidence remains valuable history — but it is not automatically proof that the system still works now.
+Если система позже изменится, это evidence останется полезной историей, но не будет автоматически доказывать, что всё работает и сейчас.
 
-**Value:** historical proof remains useful without creating false confidence.
+**Польза:** историческое доказательство сохраняется без ложной уверенности.
 
----
+## Когда проект не нужен
 
-## When not to use it
+Не создавайте структуру просто потому, что можете.
 
-Do not create structure just because you can.
+Разовый вопрос о рецепте, короткий brainstorm, перевод или одноразовая задача обычно не требуют постоянного проекта.
 
-A one-off recipe question, casual brainstorm, translation, or disposable task usually does not need a persistent project.
-
-The smallest useful continuity layer is the right one.
+Правильный вариант — **самый маленький слой непрерывности, который реально приносит пользу**.
