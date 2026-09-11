@@ -1,92 +1,93 @@
-# Roadmap
+# Дорожная карта
 
-AI Continuity Kit should grow only when a real usability or reliability problem justifies the extra structure.
+AI Continuity Kit должен расти только тогда, когда реальная проблема удобства или надёжности оправдывает дополнительную структуру.
 
-## Product evolution rule — smarter, not heavier
+## Правило развития — умнее, а не тяжелее
 
-AI Continuity Kit should become more capable without making the ordinary path feel larger, slower, or harder to understand.
+Проект должен становиться функциональнее, не делая обычный путь крупнее, медленнее или сложнее для понимания.
 
-The public project therefore follows these rules:
+Поэтому действуют правила:
 
-- **Do not release by calendar pressure.** It is acceptable to wait weeks or months while ideas are tested and simplified.
-- **Prefer a few strong improvements over frequent small churn.** A release should normally bundle a small coherent set of validated improvements rather than ship every idea immediately.
-- **Keep Lite simple.** New core functionality must improve usefulness or reliability without materially increasing first-use friction, required reading, context load, runtime dependencies, or maintenance burden.
-- **Make complexity opt-in.** Optional and Advanced capabilities may grow, but they must not become prerequisites for the Lite path.
-- **Promote distilled patterns, not experimental machinery.** New ideas should first prove themselves in real use; the public kit receives the smallest reusable form that preserves the benefit.
-- **A higher version number is not permission for a larger core.** If a feature cannot be added without making the normal experience meaningfully heavier, redesign it, move it behind an optional layer, or leave it out.
+- **Не выпускать версии только из-за календаря.** Допустимо ждать недели или месяцы, пока идеи проверяются и упрощаются.
+- **Предпочитать несколько сильных улучшений частой мелкой суете.** Релиз обычно должен объединять небольшой согласованный набор проверенных улучшений.
+- **Сохранять Lite простым.** Новая базовая функция должна повышать пользу или надёжность без заметного роста сложности первого запуска, обязательного чтения, объёма контекста, runtime-зависимостей или нагрузки на сопровождение.
+- **Сложность должна быть добровольной.** Optional/Advanced-возможности могут расти, но не должны становиться обязательными для Lite.
+- **Переносить проверенные паттерны, а не экспериментальную механику.** Новая идея сначала доказывает пользу в реальной работе; публичный kit получает минимальную переиспользуемую форму.
+- **Больший номер версии не разрешает раздувать ядро.** Если функцию нельзя добавить без заметного утяжеления обычного опыта, её нужно переработать, вынести в дополнительный слой или не включать.
 
-The intended direction is simple:
-
-```text
-more useful over time
-+ same low-friction entry
-+ same understandable core
-= successful evolution
-```
-
-## Current: v0.2 preview — make the value obvious
-
-Focus:
-
-- clear public positioning;
-- 5-minute first success;
-- realistic examples;
-- explain the difference between memory, current truth, and evidence;
-- simple starter template;
-- privacy-first defaults;
-- public feedback on where the model creates or removes friction.
-
-Success means a new user can answer these questions quickly:
-
-1. Why would I need this?
-2. How is it different from normal AI memory or a second brain?
-3. What do I do first?
-4. How do I know it is working?
-
-## Next: v0.3 — onboarding without hand-editing everything
-
-Candidate work:
-
-- guided setup workflow;
-- starter generator or lightweight initializer;
-- clearer compatibility notes for common AI surfaces;
-- automatic structure validation;
-- secret/leakage checks for public mistakes;
-- migration guide from ad-hoc prompt folders and chat summaries.
-
-No implementation is promised until the simplest useful design is validated.
-
-## Later: measured reliability
-
-Potential directions:
-
-- context-budget metrics;
-- stale-fact/freshness linting;
-- semantic owner validation;
-- session handoff format;
-- explicit agent permission envelope;
-- multi-repository continuity;
-- CI checks for duplicated current owners;
-- optional live-data owner pointers.
-
-## Explicit non-goals
-
-The roadmap does **not** aim to become:
-
-- a full autonomous agent platform;
-- another vector database;
-- a mandatory all-life productivity system;
-- a transcript warehouse;
-- a giant framework that must be understood before use.
-
-## Design test for every feature
-
-Before adding a feature, ask:
+Целевое направление:
 
 ```text
-Does this reduce reconstruction, stale-context risk, unsafe ambiguity, or repeated work?
+больше пользы со временем
++ такой же лёгкий вход
++ такое же понятное ядро
+= успешное развитие
 ```
 
-If not, it probably does not belong in the core.
+## Сейчас: v0.2 preview — сделать пользу очевидной
 
-If a feature is useful only for advanced users, it should not make the Lite path heavier.
+Фокус:
+
+- понятное публичное позиционирование;
+- первый полезный результат за 5 минут;
+- реалистичные примеры;
+- ясное различие между памятью, текущей истиной и доказательствами;
+- простой starter-шаблон;
+- безопасные настройки по умолчанию с приоритетом конфиденциальности;
+- публичные отзывы о том, где модель уменьшает или создаёт лишние действия.
+
+Успех означает, что новый пользователь быстро отвечает на вопросы:
+
+1. Зачем мне это нужно?
+2. Чем это отличается от обычной памяти ИИ или «второго мозга»?
+3. Что сделать первым?
+4. Как понять, что система работает?
+
+## Далее: v0.3 — первый запуск без ручного редактирования всего подряд
+
+Возможные направления:
+
+- пошаговая настройка;
+- generator starter или лёгкий initializer;
+- более понятные заметки о совместимости с распространёнными ИИ-интерфейсами;
+- автоматическая проверка структуры;
+- проверки на случайную публикацию секретов;
+- руководство по миграции из несистемных папок с prompt и сводками чатов.
+
+Реализация не обещана, пока не будет проверен самый простой полезный вариант.
+
+## Позже: измеримая надёжность
+
+Возможные направления:
+
+- метрики объёма контекста;
+- lint-проверки свежести/устаревания фактов;
+- смысловая проверка owner;
+- формат передачи состояния между сессиями;
+- явный envelope разрешений агента;
+- непрерывность между несколькими репозиториями;
+- CI-проверки дублирующихся текущих owners;
+- необязательные указатели на источники live-данных.
+
+## Явные нецели
+
+Дорожная карта **не** направлена на превращение проекта в:
+
+- полноценную автономную agent-платформу;
+- ещё одну vector database;
+- обязательную систему продуктивности «для всей жизни»;
+- хранилище стенограмм;
+- огромный framework, который надо изучить до первого использования.
+
+## Проверка каждой новой функции
+
+Перед добавлением спросить:
+
+```text
+Уменьшает ли это повторное восстановление, риск устаревшего контекста,
+небезопасную неоднозначность или повторяющуюся работу?
+```
+
+Если нет — функции, скорее всего, не место в ядре.
+
+Если функция нужна только продвинутым пользователям, она не должна утяжелять Lite.
