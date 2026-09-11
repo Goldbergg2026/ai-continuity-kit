@@ -1,34 +1,34 @@
 ---
-name: First-use feedback
-description: Tell us where the first 5–10 minutes were clear or confusing
-title: "[FIRST USE] "
+name: Отзыв о первом использовании
+description: Расскажите, что было понятно или вызывало затруднения в первые 5–10 минут
+title: "[ПЕРВЫЙ ЗАПУСК] "
 labels: []
 assignees: []
 ---
 
-## What were you trying to do?
+## Что вы пытались сделать?
 
 
-## In the first 5–10 minutes, what was immediately clear?
+## Что было сразу понятно в первые 5–10 минут?
 
 
-## Where did you hesitate, get confused, or almost leave?
+## Где вы остановились, засомневались или запутались?
 
 
-## Did you reach a first useful result?
+## Получили ли вы первый полезный результат?
 
-- [ ] Yes
-- [ ] Partly
-- [ ] No
+- [ ] Да
+- [ ] Частично
+- [ ] Нет
 
-## What did you expect to happen that did not?
+## Что, по вашему ожиданию, должно было произойти, но не произошло?
 
 
-## Your setup
+## Ваша конфигурация
 
-- AI tool/surface:
-- OS (optional):
-- Git experience: none / basic / comfortable
+- ИИ-инструмент/интерфейс:
+- ОС (необязательно):
+- Опыт работы с Git: нет / базовый / уверенный
 
-## One thing that would make the project feel obviously useful
+## Одно изменение, которое сделало бы пользу проекта очевиднее
 
