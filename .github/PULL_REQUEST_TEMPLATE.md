@@ -1,22 +1,22 @@
-## What changed
+## Что изменилось
 
-<!-- Describe the user-visible or architectural change. -->
+<!-- Опишите видимое пользователю или архитектурное изменение. -->
 
-## Why
+## Зачем
 
-<!-- What recurring problem does this reduce: reconstruction, stale context, ambiguity, unsafe action, or friction? -->
+<!-- Какую повторяющуюся проблему это уменьшает: восстановление контекста, устаревшие сведения, неоднозначность, небезопасные действия или лишние затраты? -->
 
-## Scope
+## Границы изменения
 
-- [ ] Lite path remains simple, or the added complexity is justified.
-- [ ] No personal/private example data or secrets were added.
-- [ ] Current facts, memory, plans, and evidence remain semantically distinct.
-- [ ] Links and starter paths still work.
+- [ ] Простой путь Lite остаётся простым либо дополнительная сложность обоснована.
+- [ ] Личные/приватные примеры и секреты не добавлены.
+- [ ] Текущие факты, память, планы и доказательства остаются смыслово разделены.
+- [ ] Ссылки и пути starter продолжают работать.
 
-## Verification
+## Проверка
 
-<!-- How did you verify the change? Include a small user scenario when possible. -->
+<!-- Как изменение было проверено? По возможности добавьте небольшой пользовательский сценарий. -->
 
-## Complexity check
+## Проверка на лишнюю сложность
 
-Could this be simpler without losing the intended value?
+Можно ли сделать это проще без потери требуемой пользы?
