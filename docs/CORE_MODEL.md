@@ -1,63 +1,63 @@
-# Core model
+# Базовая модель
 
-The model is deliberately small.
+Модель намеренно остаётся небольшой.
 
-## Knowledge classes
+## Классы знаний
 
-### Current fact
+### Текущий факт (`CURRENT FACT`)
 
-A claim intended to describe reality now. If the underlying thing can change, record when/how it was verified and re-check it when a decision depends on it.
+Утверждение, которое описывает реальность сейчас. Если объект может измениться, фиксируйте, когда и как он был проверен, и перепроверяйте его перед решением, зависящим от актуальности.
 
-### User decision
+### Решение пользователя (`USER DECISION`)
 
-An explicit choice. It remains valid until replaced by a later incompatible decision or the user changes it.
+Явный выбор пользователя. Он действует, пока не заменён более поздним несовместимым решением или пока пользователь его не изменил.
 
-### Plan / target
+### План / цель (`PLAN / TARGET`)
 
-A desired future state. It must never be presented as already implemented.
+Желаемое будущее состояние. План нельзя выдавать за уже реализованный результат.
 
-### Memory / lesson
+### Память / урок (`MEMORY / LESSON`)
 
-Reusable experience that may help future work. Memory is guidance, not current truth.
+Переиспользуемый опыт, который может помочь в будущем. Память — это подсказка, а не текущая истина.
 
-### Evidence
+### Доказательство (`EVIDENCE`)
 
-A dated observation, test, log excerpt, screenshot reference, commit, or other proof of what was true at a particular time.
+Датированное наблюдение, тест, фрагмент лога, ссылка на снимок экрана, commit или другое подтверждение того, что было истинно в конкретный момент.
 
-### Unknown
+### Неизвестно (`UNKNOWN`)
 
-Something not proven. Prefer `UNKNOWN / NEEDS CHECK` over filling the gap with a plausible guess.
+То, что ещё не доказано. Лучше честное `UNKNOWN / NEEDS CHECK`, чем правдоподобная догадка, заполняющая пробел.
 
-## Ownership
+## Владение источником истины
 
-For any mutable concept, prefer one canonical owner.
+Для каждого изменяемого понятия предпочтителен один канонический owner.
 
-Other pages may summarize or link to it, but should not independently become a second current source of truth.
+Другие страницы могут ссылаться на него или давать краткую сводку, но не должны независимо становиться вторым источником текущей истины.
 
-## Freshness
+## Свежесть
 
-Freshness is event-sensitive, not just time-sensitive.
+Свежесть зависит не только от времени, но и от событий.
 
-A fact may need re-checking after:
+Факт может требовать повторной проверки после:
 
 - deployment;
 - reboot;
 - credential rotation;
-- network/DNS change;
+- изменения сети/DNS;
 - incident;
-- hardware replacement;
-- a later explicit user correction.
+- замены оборудования;
+- более позднего явного исправления пользователя.
 
-## Capture rule
+## Что сохранять после работы
 
-After substantial work, save only what will improve a future session:
+После существенной работы сохраняйте только то, что улучшит будущую сессию:
 
-- new decision;
-- verified current state;
+- новое решение;
+- проверенное текущее состояние;
 - blocker;
-- exact next step;
-- reusable lesson;
-- evidence pointer;
-- important uncertainty.
+- точный следующий шаг;
+- переиспользуемый урок;
+- указатель на evidence;
+- важную неопределённость.
 
-Do not save ordinary conversational filler by default.
+Обычный разговорный шум по умолчанию сохранять не нужно.
