@@ -1,40 +1,40 @@
 # Bootstrap prompt
 
-Copy the block below into an AI assistant that can read this repository.
+Скопируйте блок ниже в ИИ-ассистента, который умеет читать этот репозиторий.
 
 ```text
-Use this repository as a lightweight continuity layer for our work.
+Используй этот репозиторий как лёгкий слой непрерывности нашей работы.
 
-Start with START.md, then follow AGENTS.md.
+Начни с START.md, затем следуй AGENTS.md.
 
-Important rules:
-1. Load only the context relevant to my current request. Do not read the entire repository by default.
-2. Keep preferences, verified facts, project state, memory/lessons, plans, and dated evidence semantically separate.
-3. Do not treat an old chat, old evidence, or memory as current truth when the fact is mutable and the current decision depends on freshness.
-4. If a mutable fact may be stale, say so and request or perform the smallest appropriate verification before relying on it.
-5. Do not store passwords, tokens, private keys, cookies, session state, or secret values in Git.
-6. Technical access is not blanket authorization. Do not perform destructive, production, secret, or unrelated-project changes without explicit scope and appropriate recovery.
-7. After substantial work, save only reusable confirmed delta: decisions, verified state, blockers, next step, useful lessons, and evidence pointers. Do not save full conversational transcripts by default.
-8. If information is unknown or conflicting, mark it as unknown/conflicting instead of guessing.
+Важные правила:
+1. Загружай только контекст, относящийся к моему текущему запросу. Не читай весь репозиторий по умолчанию.
+2. Смыслово разделяй предпочтения, проверенные факты, состояние проекта, память/уроки, планы и датированные доказательства.
+3. Не считай старый чат, старое evidence или память текущей истиной, если факт изменяемый и текущее решение зависит от свежести.
+4. Если изменяемый факт мог устареть, скажи об этом и запроси или выполни минимальную подходящую проверку до использования этого факта.
+5. Не сохраняй в Git пароли, tokens, приватные ключи, cookies, session state или значения секретов.
+6. Технический доступ не означает полного разрешения. Не выполняй разрушительные действия, Production-изменения, операции с секретами или изменения в посторонних проектах без явного scope и подходящего recovery.
+7. После существенной работы сохраняй только подтверждённую переиспользуемую дельту: решения, проверенное состояние, blockers, следующий шаг, полезные уроки и указатели на evidence. По умолчанию не сохраняй полные стенограммы разговоров.
+8. Если сведения неизвестны или противоречат друг другу, пометь их как неизвестные/конфликтующие вместо догадки.
 
-First, inspect the minimal starter structure and tell me in plain language:
-- what this continuity repository currently knows;
-- what is still empty or unknown;
-- the smallest useful thing I should fill in first.
+Сначала изучи минимальную структуру starter и простыми словами скажи:
+- что этот continuity-репозиторий уже знает;
+- что пока пусто или неизвестно;
+- что полезнее всего заполнить первым.
 
-Do not create extra structure unless it solves a real recurring problem.
+Не создавай дополнительную структуру, если она не решает реальную повторяющуюся проблему.
 ```
 
-## First useful follow-up
+## Первый полезный следующий вопрос
 
-After the assistant understands the repository, try:
+После того как ассистент понял структуру репозитория, попробуйте:
 
 ```text
-Based only on relevant current context, what should I do next? Tell me what you know, what may be stale, and what you are inferring.
+На основании только релевантного текущего контекста скажи, что мне делать дальше. Отдельно укажи, что известно, что могло устареть и что является твоим выводом.
 ```
 
-## Why this prompt is intentionally small
+## Почему prompt намеренно небольшой
 
-The repository should carry durable structure. The prompt should only establish how to use that structure.
+Устойчивая структура должна жить в репозитории. Prompt только объясняет, как этой структурой пользоваться.
 
-If your bootstrap prompt keeps growing, move stable rules into the appropriate owner file instead of creating a giant permanent prompt.
+Если bootstrap prompt постоянно растёт, переносите устойчивые правила в соответствующий owner-файл вместо создания огромного постоянного prompt.
