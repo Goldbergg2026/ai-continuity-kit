@@ -1,100 +1,96 @@
-# Examples: what “good continuity” looks like
+# Примеры хорошей непрерывности
 
-These are examples of **shape**, not data you should copy blindly.
+Это примеры **структуры и смысла**, а не данные, которые нужно слепо копировать.
 
-## Example A — everyday assistant
+## Пример A — повседневный ассистент
 
-### Preferences
+### Предпочтения
 
 ```md
 # PREFERENCES
 
-- Give the short answer first.
-- Explain unfamiliar technical terms before using them freely.
-- When one option clearly fits, recommend it instead of listing ten alternatives.
+- Сначала дай короткий ответ.
+- Незнакомые технические термины сначала объясни простыми словами.
+- Если один вариант явно подходит лучше, рекомендуй его вместо списка из десяти альтернатив.
 ```
 
-### Durable facts
+### Устойчивые факты
 
 ```md
 # FACTS
 
-- Primary computer OS: Ubuntu 24.04 LTS
-  - Last verified: 2026-08-10
-  - Recheck after: OS reinstall or major upgrade
+- Основная ОС компьютера: Ubuntu 24.04 LTS
+  - Последняя проверка: 2026-08-10
+  - Перепроверить после: переустановки ОС или крупного обновления
 ```
 
-### Memory
+### Память
 
 ```md
 # MEMORY
 
-- When troubleshooting, start with read-only checks before proposing changes.
+- При диагностике начинать с read-only проверок и только затем предлагать изменения.
 ```
 
-Notice the difference:
+Разница:
 
-- a preference tells the assistant **how to interact**;
-- a fact says **what is known** and may include freshness;
-- memory stores a **reusable lesson**, not proof of current reality.
+- preference говорит ассистенту **как взаимодействовать**;
+- fact говорит **что известно** и при необходимости содержит сведения о свежести;
+- memory хранит **переиспользуемый урок**, а не доказательство текущей реальности.
 
----
-
-## Example B — a continuing project
+## Пример B — продолжающийся проект
 
 ### STATE.md
 
 ```md
-# Current state
+# Текущее состояние
 
-Goal: publish a small personal website.
+Цель: опубликовать небольшой личный сайт.
 
-Current position:
-- content draft complete;
-- domain connected;
-- deployment not yet verified from an external network.
+Текущее положение:
+- черновик содержимого готов;
+- домен подключён;
+- deployment ещё не проверен из внешней сети.
 
-Blocker:
-- final external check.
+Блокер:
+- финальная внешняя проверка.
 
-Next step:
-- verify homepage and TLS from outside the local network.
+Следующий шаг:
+- проверить главную страницу и TLS вне локальной сети.
 ```
 
 ### FACTS.md
 
 ```md
-# Verified facts
+# Проверенные факты
 
-- Canonical domain: example.com
+- Канонический домен: example.com
 - Hosting provider: Provider B
-- Last verified: 2026-08-16
+- Последняя проверка: 2026-08-16
 ```
 
 ### MEMORY.md
 
 ```md
-# Reusable lessons
+# Переиспользуемые уроки
 
-- A previous deployment looked healthy locally while public DNS still pointed to the old host. External verification matters after DNS changes.
+- Ранее deployment выглядел исправным локально, пока публичный DNS всё ещё указывал на старый host. После изменения DNS важна внешняя проверка.
 ```
 
-A new session can now continue from the exact next step without rereading the project's entire history.
+Новая сессия может продолжить работу с точного следующего шага, не перечитывая всю историю проекта.
 
----
+## Пример C — заменённая информация
 
-## Example C — superseded information
-
-Bad:
+Плохо:
 
 ```md
 Server IP: 203.0.113.10
 Server IP: 203.0.113.20
 ```
 
-Which one is current?
+Непонятно, какое значение текущее.
 
-Better:
+Лучше:
 
 ```md
 CURRENT:
@@ -105,11 +101,9 @@ HISTORICAL:
 - 203.0.113.10 — old host before migration
 ```
 
-History remains useful, but ownership of the current value is unambiguous.
+История остаётся полезной, а владелец текущего значения не вызывает сомнений.
 
----
-
-## Example D — evidence is dated
+## Пример D — evidence имеет дату
 
 ```md
 # Evidence
@@ -120,38 +114,32 @@ History remains useful, but ownership of the current value is unambiguous.
 - external connectivity: PASS
 ```
 
-Three months later this is still valuable evidence of what happened on August 16.
+Через три месяца это всё ещё полезное evidence того, что произошло 16 августа, но **не** автоматическое доказательство, что система по-прежнему исправна.
 
-It is **not** automatic proof that the system is still healthy three months later.
+## Пример E — граница разрешений
 
----
+Coding agent имеет доступ на запись в репозиторий.
 
-## Example E — permission boundary
-
-A coding agent has repository write access.
-
-The task says:
+Задача определяет:
 
 ```text
-Allowed:
-- edit documentation in this repository;
-- run local validation;
-- open a pull request.
+Разрешено:
+- редактировать документацию в этом репозитории;
+- запускать локальную проверку;
+- открыть Pull Request.
 
-Not authorized:
-- production deployment;
-- secret rotation;
-- changes in other repositories;
-- destructive cleanup.
+Не разрешено:
+- Production deployment;
+- rotation секретов;
+- изменения в других репозиториях;
+- разрушительная очистка.
 ```
 
-Technical capability is broader than task authorization, so the narrower task boundary wins.
+Техническая возможность шире полномочий задачи, поэтому действует более узкая граница задачи.
 
----
+## Главный смысл примеров
 
-## What these examples are teaching
-
-The system becomes useful when it consistently preserves these distinctions:
+Полезная система стабильно сохраняет различия:
 
 ```text
 PREFERENCE ≠ FACT
@@ -162,4 +150,4 @@ EVIDENCE ≠ FOREVER-CURRENT
 CAPABILITY ≠ AUTHORIZATION
 ```
 
-That semantic separation matters more than the exact folder names.
+Это смысловое разделение важнее конкретных названий папок.
