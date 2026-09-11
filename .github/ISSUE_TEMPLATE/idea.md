@@ -1,17 +1,17 @@
 ---
-name: Idea
-title: "[IDEA] "
-about: Suggest a small improvement to continuity, usability, or safety
+name: Идея
+title: "[ИДЕЯ] "
+about: Предложить небольшое улучшение непрерывности, удобства или безопасности
 ---
 
-## Problem
+## Какая проблема решается?
 
-What real failure or friction does this solve?
+Какой реальный сбой или лишнее затруднение устраняет это изменение?
 
-## Proposed change
+## Предлагаемое изменение
 
-What is the smallest useful change?
+Какое минимальное полезное изменение достаточно сделать?
 
-## Anti-complexity check
+## Проверка на лишнюю сложность
 
-Can this be solved by simplifying an existing rule/file instead?
+Можно ли решить эту проблему проще, упростив существующее правило или файл?

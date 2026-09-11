@@ -1,17 +1,17 @@
 # START
 
-This is the entrypoint for the personal continuity repository.
+Это точка входа личного continuity-репозитория.
 
-## Default route
+## Маршрут по умолчанию
 
-1. Read `AGENTS.md` for global behavior and safety.
-2. For ordinary conversation, read only the relevant files under `context/`.
-3. For an existing project, read its `STATE.md`, then `FACTS.md` or `MEMORY.md` only when needed.
-4. Treat mutable facts as needing freshness when the current decision depends on them.
-5. After substantial work, capture only reusable delta.
+1. Прочитать `AGENTS.md` с общими правилами поведения и безопасности.
+2. Для обычного разговора читать только релевантные файлы из `context/`.
+3. Для существующего проекта сначала прочитать его `STATE.md`, затем `FACTS.md` или `MEMORY.md` только при необходимости.
+4. Считать изменяемые факты требующими проверки свежести, когда от них зависит текущее решение.
+5. После существенной работы сохранять только переиспользуемую дельту.
 
-## Core rule
+## Основное правило
 
 `ROUTE → CHECK FRESHNESS → WORK → VERIFY → CAPTURE DELTA`
 
-Do not read the whole repository by default.
+Не читать весь репозиторий по умолчанию.

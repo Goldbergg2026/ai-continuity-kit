@@ -1,18 +1,18 @@
-# Personal facts
+# Личные факты
 
-Store only durable facts that are genuinely useful across conversations.
+Храните только устойчивые факты, которые действительно полезны в разных разговорах.
 
-For facts that can change, add `LAST VERIFIED`.
+Для фактов, которые могут измениться, добавляйте `LAST VERIFIED`.
 
-## Example
+## Пример
 
 ```text
 CURRENT FACT
-Fact: Main workstation runs Ubuntu 24.04 LTS.
+Fact: Основная рабочая станция использует Ubuntu 24.04 LTS.
 LAST VERIFIED: 2026-08-16
-Source: user confirmation
+Source: подтверждение пользователя
 ```
 
-## Current facts
+## Текущие факты
 
-None yet.
+Пока нет.

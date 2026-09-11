@@ -1,30 +1,30 @@
-# Security Policy
+# Политика безопасности
 
-AI Continuity Kit is a documentation/template project. It should never contain real credentials or private user data.
+AI Continuity Kit — проект документации и шаблонов. В нём никогда не должны храниться реальные учётные данные или приватные пользовательские данные.
 
-## Never commit
+## Никогда не сохранять в Git
 
-- passwords;
+- пароли;
 - API/OAuth/Telegram tokens;
-- private keys;
-- cookies or session state;
-- real `.env` files;
-- secret-bearing configuration or backups;
-- personal datasets that are not intentionally public.
+- приватные ключи;
+- cookies или session state;
+- реальные `.env`-файлы;
+- конфигурации или резервные копии с секретами;
+- персональные наборы данных, которые не предназначены для публичного доступа.
 
-Use placeholders such as `YOUR_TOKEN_HERE` only when an example needs to show structure.
+Если в примере необходимо показать структуру, используйте безопасные заглушки вроде `YOUR_TOKEN_HERE`.
 
-## Personal deployments
+## Личные развёртывания
 
-Use a **private repository** for your real continuity data. Git history is durable: deleting a secret from the latest commit does not erase it from earlier history.
+Для реальных continuity-данных используйте **приватный репозиторий**. История Git долговечна: удаление секрета из последнего commit не стирает его из предыдущих версий.
 
-If a secret is committed accidentally:
+Если секрет случайно попал в Git:
 
-1. revoke/rotate the secret first;
-2. remove it from the repository/history as appropriate;
-3. verify that dependent systems use the replacement;
-4. document only a safe pointer or variable name, never the secret value.
+1. сначала отзовите или замените секрет;
+2. при необходимости удалите его из репозитория и истории;
+3. убедитесь, что зависимые системы используют замену;
+4. документируйте только безопасный указатель или имя переменной, но не значение секрета.
 
-## Reporting
+## Сообщение о проблеме
 
-If you find a security issue in this public template, open a GitHub issue only when doing so does not expose a secret or private data. Do not paste credentials into an issue.
+Если вы нашли проблему безопасности в этом публичном шаблоне, создавайте GitHub Issue только тогда, когда описание не раскрывает секрет или приватные данные. Не вставляйте учётные данные в Issue.

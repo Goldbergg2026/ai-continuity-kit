@@ -1,14 +1,14 @@
-# Project facts — example
+# Факты проекта — пример
 
-Store verified, reusable project facts here.
+Храните здесь проверенные, переиспользуемые факты проекта.
 
-## Example
+## Пример
 
 ```text
 CURRENT FACT
-Fact: Production hostname is example.internal.
+Fact: Production hostname — example.internal.
 LAST VERIFIED: 2026-08-16
-Evidence: link/pointer to safe verification
+Evidence: ссылка/указатель на безопасную проверку
 ```
 
-Do not store secret values.
+Не храните значения секретов.

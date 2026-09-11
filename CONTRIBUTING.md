@@ -1,14 +1,14 @@
-# Contributing
+# Как внести вклад
 
-AI Continuity Kit aims to stay small enough for ordinary people to understand.
+AI Continuity Kit должен оставаться достаточно маленьким и понятным для обычного пользователя.
 
-Before proposing a new file, rule, or abstraction, ask:
+Перед предложением нового файла, правила или абстракции проверьте:
 
-1. What real failure does this prevent?
-2. Can the same result be achieved by simplifying an existing owner?
-3. Does it reduce ambiguity, or create another source of truth?
-4. Will a new user need to understand it on day one?
+1. Какой реальный сбой это предотвращает?
+2. Можно ли получить тот же результат, упростив существующий owner?
+3. Изменение уменьшает неоднозначность или создаёт ещё один источник истины?
+4. Нужно ли новому пользователю понимать это уже в первый день?
 
-Good contributions include clearer examples, safer defaults, migration guides, measured context-budget tooling, and small validators that catch real mistakes.
+Полезный вклад — более понятные примеры, безопасные значения по умолчанию, инструкции по миграции, измеримые инструменты контроля объёма контекста и небольшие validators, которые ловят реальные ошибки.
 
-Please keep examples synthetic and free of personal data, credentials, private infrastructure details, copied proprietary material, chat transcripts, or verbatim private conversations. The public repository is a product-facing template and documentation surface, not a record of private working conversations.
+Примеры должны быть синтетическими и не содержать личных данных, учётных данных, сведений о приватной инфраструктуре, скопированных закрытых материалов, стенограмм чатов или дословных приватных разговоров. Публичный репозиторий — это шаблон и внешняя документация продукта, а не архив внутренней рабочей переписки.

@@ -1,21 +1,21 @@
-# Interaction preferences
+# Предпочтения взаимодействия
 
-Store interface preferences here, not a psychological profile.
+Храните здесь предпочтения интерфейса и общения, а не психологический профиль.
 
-## Language
+## Язык
 
-- Preferred language: UNKNOWN
+- Предпочитаемый язык: UNKNOWN
 
-## Response style
+## Стиль ответа
 
-- Preferred level of detail: UNKNOWN
-- Preferred explanation style: UNKNOWN
+- Предпочитаемая подробность: UNKNOWN
+- Предпочитаемый стиль объяснения: UNKNOWN
 
-## Workflow preferences
+## Предпочтения рабочего процесса
 
-- Clarification tolerance: UNKNOWN
-- Preferred degree of agent initiative: UNKNOWN
+- Допустимое количество уточнений: UNKNOWN
+- Предпочитаемая степень инициативы агента: UNKNOWN
 
-## Boundary
+## Граница
 
-A temporary request in one conversation does not automatically become a durable preference.
+Временная просьба в одном разговоре не становится автоматически постоянным предпочтением.

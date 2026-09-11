@@ -2,11 +2,11 @@
 
 # AI Continuity Kit
 
-### Give ChatGPT and Codex continuity — without letting old memory become false truth.
+### Долговременная непрерывность для ChatGPT и Codex — без превращения старой памяти в текущую истину
 
-**A lightweight, Git-backed layer for AI memory, context engineering, personal knowledge, and long-running projects.**
+**Лёгкий слой на Git для памяти ИИ, контекста, личных знаний и проектов, которые живут дольше одного чата.**
 
-[⚡ 5-minute start](docs/QUICKSTART.md) · [🧠 See the model](docs/CORE_MODEL.md) · [💡 Use cases](docs/USE_CASES.md) · [⚖️ Compare approaches](docs/COMPARISON.md) · [🇷🇺 Русский](README.ru.md)
+[Старт за 5 минут](docs/QUICKSTART.md) · [Базовая модель](docs/CORE_MODEL.md) · [Сценарии](docs/USE_CASES.md) · [Сравнение](docs/COMPARISON.md)
 
 ![Status](https://img.shields.io/badge/status-v0.2%20preview-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -15,249 +15,195 @@
 
 </div>
 
----
+## Коротко
 
-## The problem in 20 seconds
+AI Continuity Kit помогает ИИ продолжать работу между чатами и при этом различать **память, историю, планы и подтверждённое текущее состояние**.
 
-You use ChatGPT or Codex for weeks or months. Then one of these happens:
+Перед действием система должна уметь ответить на три вопроса:
 
-- the assistant **forgets an important decision**;
-- it remembers something that **used to be true but is stale now**;
-- the project is scattered across chats, notes, files, and agent memory;
-- a new session has to **reconstruct everything from scratch**;
-- an agent has technical access, but nobody clearly defined **what it is actually allowed to change**.
+> **Что мы знаем? Что из этого актуально? Что мне разрешено делать?**
 
-AI Continuity Kit gives you a small, inspectable continuity layer so the AI can answer three questions before acting:
+Для старта не нужны vector database, фоновый сервис или обязательный agent framework. Достаточно обычных Markdown-файлов и Git.
 
-> **What do we know? What is current? What am I allowed to do?**
+**Статус:** `v0.2 preview` — предварительная версия, которая проверяется на реальных сценариях.  
+**Для реальных личных данных:** используйте приватный репозиторий.  
+**Текущий быстрый путь:** [`docs/QUICKSTART.md`](docs/QUICKSTART.md).
 
-No vector database. No background service. No agent framework. Start with plain Markdown and Git.
+## Какая проблема решается
 
----
+При длительной работе с ChatGPT или Codex часто происходит одно и то же:
 
-## What changes for you
+- ИИ забывает важное решение;
+- помнит сведения, которые уже устарели;
+- проект распадается между чатами, заметками, файлами и памятью модели;
+- новая сессия заново восстанавливает контекст;
+- технический доступ агента ошибочно воспринимается как разрешение менять всё.
 
-| Before | With AI Continuity Kit |
+Цель проекта — **меньше повторного восстановления, меньше устаревшего контекста и безопаснее продолжение работы**, а не больше документации ради документации.
+
+## Что меняется для человека
+
+| Было | С AI Continuity Kit |
 |---|---|
-| “I think we discussed this somewhere.” | Decisions have an explicit home. |
-| Old chat memory quietly becomes “truth.” | Mutable facts can require a freshness check. |
-| Every new session gets a giant context dump. | The assistant loads only the relevant route. |
-| Projects live inside conversation history. | Current state survives the conversation. |
-| Useful lessons are mixed with current facts. | Memory and verified facts are separate. |
-| Broad agent access feels like broad permission. | Technical access and authorization are separate. |
+| «Мы вроде где-то это обсуждали.» | У решений есть явное место. |
+| Старая память незаметно становится «правдой». | Изменяемые факты требуют проверки свежести, когда она важна. |
+| В новый чат загружается всё подряд. | ИИ читает только нужный маршрут. |
+| Проект живёт внутри истории переписки. | Текущее состояние переживает отдельный чат. |
+| Полезные уроки смешаны с текущими фактами. | Память и подтверждённые факты разделены. |
+| Широкий доступ выглядит как широкое разрешение. | Технический доступ и полномочия разделены. |
 
-The goal is not more documentation. The goal is **less reconstruction, less stale context, and safer continuation**.
+## Один понятный пример
 
----
+Допустим, проект раньше использовал Провайдера A, а затем перешёл на Провайдера B. Обычная память может продолжать предлагать Провайдера A просто потому, что эта информация раньше была важной.
 
-## See it in one example
-
-Imagine a project originally used Provider A. Two months later you migrated to Provider B.
-
-A normal memory system may still surface “Provider A” because it was once important.
-
-With this model:
+В этой модели роли разделены:
 
 ```text
-PROJECT_STATE.md   → migration complete; Provider B is current
-PROJECT_FACTS.md   → Provider B, last verified 2026-08-16
-PROJECT_MEMORY.md  → Provider A caused a useful past failure pattern
-EVIDENCE/          → dated proof of the migration test
+PROJECT_STATE.md   → миграция закончена; сейчас используется Провайдер B
+PROJECT_FACTS.md   → Провайдер B, последний раз проверено 2026-08-16
+PROJECT_MEMORY.md  → у Провайдера A был полезный для будущего паттерн ошибки
+EVIDENCE/          → датированное доказательство теста после миграции
 ```
 
-The old information is not deleted. It is simply **not allowed to impersonate current reality**.
+Старая информация не удаляется — ей просто **не разрешается выдавать себя за текущую реальность**.
 
-That distinction is the core of the project.
+## Старт за 5 минут
 
----
+Готовый шаблон находится в [`starter/`](starter/).
 
-## Try it in 5 minutes
+1. Скопируйте `starter/` в приватный репозиторий.
+2. Заполните только действительно нужные сведения:
+   - `context/PREFERENCES.md` — как вам удобнее работать;
+   - `context/FACTS.md` — устойчивые факты, которые стоит повторно использовать;
+   - `STATE.md` одного проекта — если у вас уже есть продолжаемая работа.
+3. Используйте [`starter/BOOTSTRAP_PROMPT.md`](starter/BOOTSTRAP_PROMPT.md) или дайте ИИ эквивалентную инструкцию:
 
-The ready-to-copy template is in [`starter/`](starter/).
+> Начни с `START.md`. Загружай только контекст, нужный для моего запроса. Изменяемые факты считай требующими проверки, когда актуальность важна. После существенной работы сохраняй только подтверждённую повторно полезную дельту.
 
-### 1. Copy the starter into a private repository
+После этого можно задавать обычные вопросы, например: «Какое сейчас состояние моего проекта и что делать следующим шагом?»
 
-Your real personal context should normally be private.
+> **Проверено с обычным ChatGPT в веб-версии:** в реальной конфигурации с доступным GitHub App постоянная пользовательская инструкция на `repo/main/START.md` позволяла ChatGPT входить в репозиторий, следовать маршрутам и загружать нужные continuity-файлы без Codex, ChatGPT Work и отдельного API-runtime. Доступность GitHub зависит от тарифа и режима, поэтому это подтверждённая совместимость, а не универсальная гарантия. Подробности: [`docs/CHATGPT-WEB.md`](docs/CHATGPT-WEB.md).
 
-### 2. Fill only three small things
-
-- `context/PREFERENCES.md` — how you prefer to work;
-- `context/FACTS.md` — durable facts worth reusing;
-- one project `STATE.md` — only if you actually have a continuing project.
-
-### 3. Paste one instruction to your AI
-
-Use [`starter/BOOTSTRAP_PROMPT.md`](starter/BOOTSTRAP_PROMPT.md), or simply say:
-
-> Start with `START.md`. Load only the context needed for my request. Treat mutable facts as stale when freshness matters. After substantial work, save only reusable confirmed delta.
-
-Then ask something normal, for example:
-
-> “What is the current state of my project and what should I do next?”
-
-You do **not** need to memorize the file structure. The structure exists so the assistant can be more reliable.
-
-Full walkthrough: [5-minute quick start](docs/QUICKSTART.md).
-
-> [!TIP]
-> **Field-tested with ordinary ChatGPT web.** In a real web-chat setup where the GitHub App was available, a persistent Custom Instruction pointing to `repo/main/START.md` let ordinary ChatGPT enter the repository, follow its routes, and load the relevant continuity files — without Codex, ChatGPT Work, or a separate API runtime. GitHub availability varies by plan and experience, so treat this as verified compatibility, not a universal guarantee. [See the exact setup →](docs/CHATGPT-WEB.md)
-
----
-
-## The continuity loop
+## Цикл непрерывности
 
 ```mermaid
 flowchart LR
-    H[Human request] --> R{Route}
-    R --> C[Relevant context]
-    C --> F{Fresh enough?}
-    F -->|yes| W[Work]
-    F -->|no| V[Verify current reality]
+    H[Запрос человека] --> R{Маршрут}
+    R --> C[Нужный контекст]
+    C --> F{Достаточно свежий?}
+    F -->|да| W[Работа]
+    F -->|нет| V[Проверка текущей реальности]
     V --> W
-    W --> Q[Check result]
-    Q --> D[Capture useful delta]
-    D --> N[Next session continues]
+    W --> Q[Проверка результата]
+    Q --> D[Сохранить полезную дельту]
+    D --> N[Следующая сессия продолжает]
 ```
 
-**Core rule:**
+Основное правило:
 
 ```text
 ROUTE → OWNER → FRESHNESS CHECK → WORK → VERIFY → CAPTURE DELTA
 ```
 
----
+То есть: найти правильный маршрут → определить источник истины → проверить свежесть → выполнить работу → проверить результат → сохранить только полезное изменение.
 
-## Six ideas that make it different
+## Шесть принципов
 
-1. **Memory is not truth.** A useful lesson can survive for years; a server address may be stale tomorrow.
-2. **One fact, one owner.** Avoid several files independently claiming the same current state.
-3. **Progressive disclosure.** Load only the context needed for the current task.
-4. **Keep deltas, not transcripts.** Save decisions, verified state, blockers, and lessons — not conversational noise.
-5. **Human language first.** The user asks normal questions; the assistant handles routing.
-6. **Technical access is not permission.** An agent having write access does not mean every write is authorized.
+1. **Память не является истиной.** Полезный урок может жить годами, а IP-адрес устареть завтра.
+2. **Один факт — один владелец.** Несколько независимых файлов не должны одновременно заявлять разную «текущую правду».
+3. **Постепенная загрузка контекста (`progressive disclosure`).** Читать только то, что действительно нужно для текущей задачи.
+4. **Сохранять дельту, а не стенограмму.** Решения, проверенное состояние, блокеры и уроки — да; разговорный шум — нет.
+5. **Обычный язык прежде внутренней структуры.** Человек формулирует задачу естественно, маршрутизацию выполняет ИИ.
+6. **Технический доступ не равен разрешению.** Возможность записать файл ещё не означает право это делать.
 
----
+## Три уровня — начинать с малого
 
-## Three levels — start small
-
-| Level | Best for | Add |
+| Уровень | Для чего | Что добавляется |
 |---|---|---|
-| **Lite** | Everyday ChatGPT use | preferences, durable facts, memory rules |
-| **Standard** | Personal/work projects | state, facts, decisions, memory, dated evidence |
-| **Advanced** | Codex / agents / operations | action gates, permissions, recovery, CI, multiple repositories |
+| **Lite** | Повседневный ChatGPT | предпочтения, устойчивые факты, правила памяти |
+| **Standard** | Личные и рабочие проекты | состояние, факты, решения, память, датированные доказательства |
+| **Advanced** | Codex / агенты / операции | разрешения, stop-gates, recovery, CI, несколько репозиториев |
 
-**Do not start with Advanced.** Add structure only when a real recurring problem justifies it.
+`stop-gates` — условия, при которых агент обязан остановиться перед следующим действием.
 
----
+Не начинайте с Advanced: дополнительная сложность оправдана только тогда, когда решает реальную повторяющуюся проблему.
 
-## Is this another “second brain”?
+## Это не просто «второй мозг»
 
-Not exactly.
+`Second brain` обычно сосредоточен на сборе и поиске знаний. AI Continuity Kit — на **продолжении работы без смешивания памяти, истории, планов и текущей истины**.
 
-A second brain usually focuses on **collecting and retrieving knowledge**. AI Continuity Kit focuses on **continuing work without confusing memory, history, plans, and current truth**.
+Он может использоваться вместе с ChatGPT Memory, инструкциями Codex, Obsidian, RAG/vector database, персональным ИИ-ассистентом или обычным Git-репозиторием проекта.
 
-It can complement:
+Подробнее: [`docs/COMPARISON.md`](docs/COMPARISON.md).
 
-- ChatGPT Memory;
-- Codex project instructions;
-- an Obsidian vault;
-- a RAG/vector database;
-- a personal AI assistant;
-- an existing project repository.
+## Где это полезно
 
-See [Comparison: native memory vs second brain vs RAG vs continuity layer](docs/COMPARISON.md).
+- устойчивые предпочтения ChatGPT без превращения памяти в биографическое досье;
+- проекты, которые продолжаются через десятки разговоров;
+- разделение CURRENT-фактов и исторических доказательств;
+- передача работы между ChatGPT и Codex;
+- сохранение решений и причин, почему они были приняты;
+- повторное использование полезных паттернов ошибок и восстановления;
+- ограничение действий агента даже при широком техническом доступе.
 
----
+Подробнее: [`docs/USE_CASES.md`](docs/USE_CASES.md).
 
-## Good use cases
+## Конфиденциальность и безопасность
 
-- keeping ChatGPT preferences without turning them into a biography dump;
-- continuing a project across many conversations;
-- keeping current facts separate from historical evidence;
-- handing work between ChatGPT and Codex;
-- preserving decisions and the reason behind them;
-- remembering useful failure/recovery patterns;
-- controlling what an agent may change when it has broad technical access.
+Этот репозиторий — **публичный шаблон**. Настоящий continuity-репозиторий с личным контекстом обычно должен быть **приватным**.
 
-See [realistic examples](docs/USE_CASES.md).
+Никогда не помещайте в Git реальные пароли, токены, приватные ключи, cookies, session state, значения `.env` или конфигурации с секретами. Вместо значения храните безопасный указатель или имя переменной.
 
----
+Датированный успешный тест доказывает состояние **в тот момент времени**, а не автоматически текущий runtime.
 
-## Privacy and safety
+См. [`SECURITY.md`](SECURITY.md).
 
-This repository is a **public template**. Your actual continuity repository should usually be **private**.
+## Кому подходит проект
 
-Never commit real passwords, tokens, private keys, cookies, session state, `.env` values, or secret-bearing configuration. Keep a safe pointer or variable name instead.
+Проект полезен, если вы хотите, чтобы ИИ помнил, но при этом хотите понимать, почему памяти можно доверять; постоянно заново объясняете проект в новых чатах; хотите общий устойчивый контекст для ChatGPT и Codex без гигантских prompt; хотите иметь возможность самому открыть и проверить, что система считает знанием.
 
-Also remember: a dated test proves what was true **at that time**. It does not automatically prove current runtime state.
+Он, вероятно, не нужен для разовых разговоров или если уже есть зрелая платформа, которая надёжно решает свежесть, владение источниками истины, непрерывность и права действий.
 
-Read [`SECURITY.md`](SECURITY.md).
+## Чем проект не является
 
----
+- не замена ChatGPT Memory;
+- не замена инструкциям Codex;
+- не vector database и не RAG engine;
+- не архив всех разговоров;
+- не утверждение, что Markdown всегда должен быть базой данных;
+- не повод превращать повседневную жизнь в бюрократию.
 
-## Who this is for
+Побеждает **самая маленькая система, которая реально решает проблему**.
 
-This project is useful if you think:
+## Навигация
 
-- “I want my AI to remember, but I also want to know **why I should trust what it remembers**.”
-- “I keep rebuilding project context in new chats.”
-- “I want ChatGPT and Codex to share a durable working model without stuffing everything into every prompt.”
-- “I want something inspectable and editable by a human.”
-
-It is probably **not** for you if you only need casual chat, or if you already have a mature knowledge/agent platform that solves freshness, ownership, continuity, and permissions well enough.
-
----
-
-## What this project is not
-
-- Not a replacement for ChatGPT Memory.
-- Not a replacement for Codex project instructions.
-- Not a vector database or RAG engine.
-- Not a transcript archive.
-- Not a claim that Markdown is always the right database.
-- Not an excuse to turn everyday life into process bureaucracy.
-
-The smallest useful system wins.
-
----
-
-## Explore
-
-- [Quick start](docs/QUICKSTART.md)
-- [Ordinary ChatGPT web + GitHub](docs/CHATGPT-WEB.md)
-- [Core model](docs/CORE_MODEL.md)
-- [Architecture](docs/ARCHITECTURE.md)
-- [Use cases](docs/USE_CASES.md)
-- [Comparison](docs/COMPARISON.md)
+- [Быстрый старт](docs/QUICKSTART.md)
+- [Обычный ChatGPT в веб-версии + GitHub](docs/CHATGPT-WEB.md)
+- [Базовая модель](docs/CORE_MODEL.md)
+- [Архитектура](docs/ARCHITECTURE.md)
+- [Сценарии](docs/USE_CASES.md)
+- [Сравнение](docs/COMPARISON.md)
 - [FAQ](docs/FAQ.md)
-- [Examples](examples/README.md)
-- [Roadmap](ROADMAP.md)
-- [Starter template](starter/)
+- [Примеры](examples/README.md)
+- [Дорожная карта](ROADMAP.md)
+- [Готовый шаблон](starter/)
 
----
+## Статус проекта
 
-## Project status
-
-**v0.2 preview.** The model is intentionally lightweight while real-world workflows are validated.
-
-The next goal is not “more files.” It is a smoother path from:
+**`v0.2 preview`**. Следующая цель — не «добавить больше файлов», а сделать путь пользователя максимально коротким:
 
 ```text
-I just found this repo
+Я нашёл репозиторий
         ↓
-I understand why I need it
+Я понял, зачем он мне
         ↓
-I get my first useful result
+Я получил первый полезный результат
         ↓
-I keep using it because it reduces friction
+Я продолжаю пользоваться, потому что система уменьшает трение
 ```
 
-Contributions and real-world failure cases are welcome. See [`CONTRIBUTING.md`](CONTRIBUTING.md).
+Проект независимый и не аффилирован с OpenAI. Названия ChatGPT и Codex используются описательно.
 
-## Independent project
+## Лицензия
 
-AI Continuity Kit is an independent open-source project. It is not affiliated with or endorsed by OpenAI. “ChatGPT” and “Codex” are used descriptively to explain compatible workflows.
-
-## License
-
-MIT — see [`LICENSE`](LICENSE).
+MIT — см. [`LICENSE`](LICENSE).

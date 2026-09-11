@@ -1,94 +1,96 @@
-# Ordinary ChatGPT web + GitHub
+# Обычный ChatGPT в веб-версии + GitHub
 
-## Field-tested entrypoint workflow
+## Проверенный сценарий с точкой входа
 
-**Status:** field-tested on 2026-08-25 in an ordinary ChatGPT web chat. This is compatibility evidence for one real setup, not a guarantee that every ChatGPT account exposes the same GitHub capabilities.
+**Статус:** сценарий проверен 25.08.2026 в обычном чате ChatGPT в веб-версии. Это доказательство совместимости на одной реальной конфигурации, а не гарантия, что одинаковые возможности GitHub доступны у каждого аккаунта ChatGPT.
 
-The useful part is simple: **you do not need Codex, ChatGPT Work, or a separate API runtime just to make the repository act as the continuity entrypoint.**
+Главный практический вывод: **для самой схемы входа в continuity-репозиторий не требуется Codex, ChatGPT Work или отдельный API-runtime**, если обычный ChatGPT уже имеет доступ к нужному GitHub-репозиторию.
 
-In the tested setup, ordinary ChatGPT could start from one persistent instruction, open a connected GitHub repository, read `START.md`, and then follow the repository's routing rules to the files relevant to the current request.
+В проверенной конфигурации обычный ChatGPT начинал с одной постоянной инструкции, открывал подключённый GitHub-репозиторий, читал `START.md`, затем следовал маршрутам репозитория и подгружал только файлы, относящиеся к текущему запросу.
 
 ```text
-Custom Instructions
+Пользовательские инструкции
         ↓
-connected GitHub repository
+подключённый GitHub-репозиторий
         ↓
 START.md
         ↓
-route to the relevant owner/context
+маршрут к нужному owner/context
         ↓
-normal ChatGPT conversation
+обычный разговор в ChatGPT
 ```
 
-## What you need
+`owner` здесь означает назначенный источник истины для конкретного вида информации, а `context` — только контекст, нужный текущей задаче.
 
-1. A continuity repository that ChatGPT is allowed to access. For real personal or work context, keep it **private**.
-2. GitHub connected in ChatGPT under **Settings → Apps → GitHub**, with access granted to that repository.
-3. ChatGPT **Custom Instructions** enabled under **Settings → Personalization → Custom Instructions**.
-4. A stable entrypoint such as `START.md` in the repository.
+## Что понадобится
 
-OpenAI documents Custom Instructions as available in ChatGPT on web, desktop, iOS, and Android. OpenAI also documents GitHub repository access in ChatGPT, but notes that GitHub App availability can vary by plan and experience. In particular, a feature may be available in one ChatGPT experience and not exposed in another.
+1. Continuity-репозиторий, к которому ChatGPT разрешён доступ. Для настоящего личного или рабочего контекста используйте **приватный** репозиторий.
+2. Подключённый GitHub в ChatGPT: **Settings → Apps → GitHub**, с доступом к нужному репозиторию.
+3. Включённые **Пользовательские инструкции**: **Settings → Personalization → Custom Instructions**.
+4. Стабильная точка входа, например `START.md`.
 
-Official references:
+OpenAI указывает, что Пользовательские инструкции доступны в ChatGPT в веб-версии, desktop, iOS и Android. OpenAI также документирует доступ ChatGPT к GitHub-репозиториям, но отдельно предупреждает: доступность GitHub App может зависеть от тарифа и конкретного режима ChatGPT. Возможность, доступная в одном режиме, может не отображаться в другом.
 
-- [OpenAI Help — ChatGPT Custom Instructions](https://help.openai.com/en/articles/8096356-chatgpt-custom-instructions)
-- [OpenAI Help — Connecting GitHub to ChatGPT](https://help.openai.com/en/articles/11145903-connecting-github-to-chatgpt)
+Официальные источники:
 
-## Recommended Custom Instruction
+- [OpenAI Help — Пользовательские инструкции ChatGPT](https://help.openai.com/ru-ru/articles/8096356-chatgpt-custom-instructions)
+- [OpenAI Help — Подключение GitHub к ChatGPT](https://help.openai.com/ru-ru/articles/11145903-connecting-github-to-chatgpt)
 
-Replace the placeholder repository name with your own private continuity repository:
+## Рекомендуемая Пользовательская инструкция
+
+Замените название репозитория-заглушку на свой приватный continuity-репозиторий:
 
 ```text
-At the start of every new chat, use the connected GitHub repository <owner>/<continuity-repo>, branch main, and open START.md before the first substantive answer.
+В начале каждого нового чата используй подключённый GitHub-репозиторий <owner>/<continuity-repo>, ветку main, и открой START.md до первого содержательного ответа.
 
-Follow the routes declared there and load only the files relevant to my current request. Do not read the whole repository by default.
+Дальше следуй указанным там маршрутам и загружай только файлы, относящиеся к моему текущему запросу. Не читай весь репозиторий по умолчанию.
 
-If GitHub, the repository, or START.md cannot be accessed, say so explicitly instead of substituting old memory or guessing.
+Если GitHub, репозиторий или START.md недоступны, скажи об этом явно вместо подмены старой памятью или догадками.
 ```
 
-The instruction stays small on purpose. Stable policy belongs in the repository; Custom Instructions only tell ChatGPT **where to enter**.
+Инструкция намеренно остаётся короткой. Стабильные правила должны жить в репозитории; Пользовательские инструкции только сообщают ChatGPT, **где находится точка входа**.
 
-## What was actually verified
+## Что именно было проверено
 
-The field-tested behavior was:
+Практически подтверждён сценарий:
 
-- a new **ordinary ChatGPT web chat** started with the persistent entrypoint rule;
-- ChatGPT accessed the connected GitHub repository;
-- it opened the designated `START.md` entrypoint;
-- it followed repository-defined routing instead of requiring the entire knowledge base in the prompt;
-- relevant repository files could then supply durable context for normal chat work.
+- новый **обычный чат ChatGPT в веб-версии** начинался с постоянного правила точки входа;
+- ChatGPT обращался к подключённому GitHub-репозиторию;
+- открывал назначенный `START.md`;
+- следовал маршрутизации из репозитория вместо загрузки всей базы знаний в prompt;
+- релевантные файлы репозитория использовались как устойчивый контекст обычной работы в чате.
 
-That is the important compatibility result: **a Git-backed continuity layer can work directly from ordinary ChatGPT when the required GitHub access is available.**
+Главный подтверждённый результат: **Git-backed continuity layer может работать прямо из обычного ChatGPT, когда нужный GitHub-доступ действительно доступен этому чату.**
 
-This statement intentionally does **not** mean:
+Это утверждение **не означает**, что:
 
-- every account or plan exposes GitHub in ordinary chat;
-- every future ChatGPT UI will use the same menu names;
-- a successful test today proves permanent future product behavior;
-- GitHub access itself grants permission for destructive or unrelated changes.
+- GitHub в обычном чате доступен каждому аккаунту или тарифу;
+- названия пунктов интерфейса никогда не изменятся;
+- сегодняшний успешный тест гарантирует неизменность продукта в будущем;
+- технический доступ к GitHub автоматически разрешает опасные или не относящиеся к задаче изменения.
 
-## Quick verification
+## Быстрая проверка
 
-After configuring the instruction, open a fresh ordinary ChatGPT chat and ask something that requires repository context, for example:
+После настройки откройте новый обычный чат ChatGPT и задайте вопрос, требующий контекста из репозитория, например:
 
-> Read the configured entrypoint and tell me which file owns the current project state. Do not infer it from chat memory.
+> Прочитай настроенную точку входа и скажи, какой файл владеет текущим состоянием проекта. Не выводи это из памяти переписки.
 
-A good result should show that ChatGPT uses the repository route. If repository access is unavailable, the correct behavior is to report that limitation rather than pretending the entrypoint was read.
+Хороший результат показывает, что ChatGPT действительно использует маршрут из репозитория. Если GitHub недоступен, правильное поведение — явно сообщить об ограничении, а не делать вид, что `START.md` был прочитан.
 
-## Why this pattern matters
+## Почему схема полезна
 
-Without an entrypoint rule, every new chat may need a long manual prompt telling the assistant where everything lives.
+Без правила точки входа в каждом новом чате приходится заново объяснять, где лежат правила и текущее состояние.
 
-With one stable entrypoint:
+С одной устойчивой точкой входа:
 
 ```text
-one small persistent instruction
+одна короткая постоянная инструкция
         ↓
-repository-owned routing
+маршрутизация, которой владеет репозиторий
         ↓
-progressive context loading
+постепенная загрузка нужного контекста
 ```
 
-The repository carries the durable structure; the chat stays lightweight.
+Репозиторий хранит устойчивую структуру, а чат остаётся лёгким.
 
-Back to the [5-minute quick start](QUICKSTART.md).
+Вернуться к [быстрому старту](QUICKSTART.md).

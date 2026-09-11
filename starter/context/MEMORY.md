@@ -1,11 +1,11 @@
-# Personal memory / lessons
+# Личная память / уроки
 
-Memory contains reusable experience, not current truth.
+Memory хранит переиспользуемый опыт, а не текущую истину.
 
-## Rule
+## Правило
 
-Before using a memory that depends on a mutable fact, verify the fact again.
+Перед использованием memory, которая зависит от изменяемого факта, перепроверьте этот факт.
 
-## Lessons
+## Уроки
 
-None yet.
+Пока нет.

@@ -1,55 +1,55 @@
-# Architecture
+# Архитектура
 
-AI Continuity Kit separates five concerns that are often mixed together.
+AI Continuity Kit разделяет пять областей, которые часто ошибочно смешивают.
 
 ```mermaid
 flowchart TD
-  I[Interaction preferences] --> R[Router / START]
-  R --> K[Knowledge]
-  R --> P[Projects]
-  R --> A[Action policy]
-  K --> F[Current facts]
-  K --> M[Memory / lessons]
-  P --> S[Current state]
-  P --> D[Decisions / requirements]
-  P --> E[Dated evidence]
-  F --> C[Freshness check]
+  I[Предпочтения взаимодействия] --> R[Router / START]
+  R --> K[Знания]
+  R --> P[Проекты]
+  R --> A[Политика действий]
+  K --> F[Текущие факты]
+  K --> M[Память / уроки]
+  P --> S[Текущее состояние]
+  P --> D[Решения / требования]
+  P --> E[Датированные доказательства]
+  F --> C[Проверка свежести]
   S --> C
-  C --> W[Work]
+  C --> W[Работа]
   A --> W
-  W --> V[Verify]
-  V --> U[Update canonical owner]
+  W --> V[Проверка результата]
+  V --> U[Обновление канонического owner]
 ```
 
-## Interaction layer
+## Слой взаимодействия
 
-How the assistant should communicate and personalize presentation. It should not silently rewrite factual truth to match preferences.
+Определяет, как ассистент должен общаться и адаптировать подачу. Предпочтения не должны незаметно переписывать фактическую истину.
 
-## Knowledge layer
+## Слой знаний
 
-Durable facts, decisions, lessons, and evidence. The key rule is to keep *current facts* separate from *memory*.
+Устойчивые факты, решения, уроки и доказательства. Ключевое правило — хранить **текущие факты** отдельно от **памяти**.
 
-## Project layer
+## Слой проектов
 
-A project has a compact current state so a new session can resume without reading the full history.
+У проекта есть компактное текущее состояние, чтобы новая сессия могла продолжить работу без чтения всей истории.
 
-## Action layer
+## Слой действий
 
-For Codex or another agent, distinguish autonomy from permission. An agent may be free to investigate while still being read-only.
+Для Codex или другого агента автономность отделяется от разрешений. Агент может свободно исследовать, оставаясь при этом в режиме read-only.
 
-## Evidence layer
+## Слой доказательств
 
-Tests and observations are dated. Old evidence remains useful history, but does not automatically prove the current state.
+Тесты и наблюдения датируются. Старое evidence остаётся полезной историей, но не доказывает автоматически текущее состояние.
 
-## Progressive disclosure
+## Постепенная загрузка контекста
 
-A good startup path is small:
+Хороший стартовый путь должен быть коротким:
 
 ```text
 START
-→ classify the request
-→ load only relevant context
-→ work
+→ классифицировать запрос
+→ загрузить только нужный контекст
+→ выполнить работу
 ```
 
-Large histories, logs, and evidence should be loaded only when the current task needs them.
+Большие истории, логи и доказательства загружаются только тогда, когда они действительно нужны текущей задаче.

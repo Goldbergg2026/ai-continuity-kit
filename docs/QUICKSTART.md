@@ -1,71 +1,69 @@
-# 5-minute quick start
+# Быстрый старт за 5 минут
 
-The goal is to get one useful result quickly, not to design a perfect knowledge system.
+Цель — получить первый полезный результат, а не спроектировать идеальную систему знаний.
 
-## Minute 1 — create a private home
+## Минута 1 — создайте приватное место
 
-Copy the contents of [`starter/`](../starter/) into a new **private** repository for your real continuity data.
+Скопируйте содержимое [`starter/`](../starter/) в новый **приватный** репозиторий для вашего настоящего контекста.
 
-You can keep the example project for reference or delete it until you need a continuing project.
+Пример проекта можно оставить как подсказку или удалить, пока продолжаемого проекта ещё нет.
 
-## Minute 2 — add only a few real things
+## Минута 2 — добавьте только несколько реальных вещей
 
-Edit:
+Отредактируйте:
 
-- `context/PREFERENCES.md` — 2–5 stable interaction preferences;
-- `context/FACTS.md` — a few durable facts that are genuinely useful;
-- `context/MEMORY.md` — leave nearly empty until a reusable lesson actually appears.
+- `context/PREFERENCES.md` — 2–5 устойчивых предпочтений взаимодействия;
+- `context/FACTS.md` — несколько действительно полезных устойчивых фактов;
+- `context/MEMORY.md` — почти не заполняйте, пока не появился реальный повторно полезный урок.
 
-Do not create a biography just because a file exists.
+Не создавайте биографическое досье только потому, что существует пустой файл.
 
-## Minute 3 — bootstrap the assistant
+## Минута 3 — подключите ИИ к правилам
 
-Open [`starter/BOOTSTRAP_PROMPT.md`](../starter/BOOTSTRAP_PROMPT.md) and paste it into an AI assistant that can read the repository.
+Откройте [`starter/BOOTSTRAP_PROMPT.md`](../starter/BOOTSTRAP_PROMPT.md) и передайте этот текст ИИ, который может читать репозиторий.
 
-If your current tool cannot read a repository directly, provide only `START.md`, `AGENTS.md`, and the small context file relevant to the task. Do not dump the whole repository by default.
+Если текущая среда не умеет читать репозиторий напрямую, передайте только `START.md`, `AGENTS.md` и небольшой файл контекста, относящийся к текущей задаче. Не загружайте весь репозиторий без необходимости.
 
-## Minute 4 — ask a normal question
+## Минута 4 — задайте обычный вопрос
 
-Try:
+Например:
 
-> Based only on relevant current context, what should I do next? Tell me what you know, what may be stale, and what you are inferring.
+> На основании только релевантного текущего контекста, что мне делать дальше? Скажи отдельно, что известно, что может быть устаревшим и что является твоим выводом.
 
-A good result should clearly distinguish known facts from uncertainty.
+Хороший результат явно отделяет известное от неопределённого.
 
-## Minute 5 — test continuity
+## Минута 5 — проверьте непрерывность
 
-Change or supersede one mutable fact, then start a fresh session.
+Измените или замените один изменяемый факт и начните новую сессию.
 
-Ask:
+Спросите:
 
-> Which value is current, which one is historical, and why?
+> Какое значение сейчас актуально, какое историческое и почему?
 
-If the assistant can answer without you manually rebuilding the whole conversation, the continuity loop is working.
+Если ИИ отвечает без ручного восстановления всей прежней переписки, continuity loop уже работает.
 
----
+## Проект добавляется только когда он действительно нужен
 
-## Add a project only when needed
+Когда у работы появилось устойчивое состояние, которое нужно продолжать, скопируйте `projects/example/` и переименуйте папку.
 
-When work has durable state worth continuing, copy `projects/example/` and rename the folder.
+Разделяйте три роли:
 
-Keep three roles clear:
+- `STATE.md` — где работа сейчас, blockers и следующий шаг;
+- `FACTS.md` — проверенные повторно используемые факты;
+- `MEMORY.md` — уроки и ловушки, но не доказательство текущей реальности.
 
-- `STATE.md` — where the work is now, blockers, next step;
-- `FACTS.md` — verified reusable facts;
-- `MEMORY.md` — lessons and pitfalls, not proof of current reality.
-
-After meaningful work:
+После существенной работы:
 
 ```text
-VERIFY RESULT
+ПРОВЕРИТЬ РЕЗУЛЬТАТ
     ↓
-UPDATE THE RIGHT OWNER
+ОБНОВИТЬ ПРАВИЛЬНОГО ВЛАДЕЛЬЦА
     ↓
-SAVE ONLY REUSABLE DELTA
+СОХРАНИТЬ ТОЛЬКО ПОЛЕЗНУЮ ДЕЛЬТУ
     ↓
 COMMIT
 ```
 
-That is enough for a first real setup.
+Этого достаточно для первой рабочей версии.
 
-Next: [examples](../examples/README.md) · [FAQ](FAQ.md) · [comparison](COMPARISON.md)
+Дальше: [примеры](../examples/README.md) · [FAQ](FAQ.md) · [сравнение](COMPARISON.md)

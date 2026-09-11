@@ -1,100 +1,96 @@
-# FAQ
+# Частые вопросы
 
-## Do I need to be a programmer?
+## Нужно ли быть программистом?
 
-No. The Lite model is just a small set of Markdown files in a private repository. Git helps with history and recovery, but you do not need to understand software architecture to use the core idea.
+Нет. Вариант Lite — это небольшой набор Markdown-файлов в приватном репозитории. Git помогает с историей и восстановлением, но для основной идеи не нужно разбираться в архитектуре программного обеспечения.
 
-## Do I need Codex?
+## Нужен ли Codex?
 
-No. The continuity model can be useful with ChatGPT alone. Codex becomes relevant when you want an agent to work inside repositories or perform implementation tasks.
+Нет. Модель непрерывности полезна и с одним ChatGPT. Codex становится нужен, когда вы хотите, чтобы агент работал внутри репозитория или выполнял задачи реализации.
 
-## Is this a replacement for ChatGPT Memory?
+## Это замена ChatGPT Memory?
 
-No.
+Нет. Нативная память полезна для адаптивной персонализации. Этот kit предназначен для явной и проверяемой непрерывности: состояния проекта, подтверждённых фактов, решений, уроков, evidence и границ разрешений.
 
-Native memory is useful for adaptive personalization. This kit is for explicit, inspectable continuity: project state, verified facts, decisions, lessons, evidence, and permission boundaries.
+## Это «второй мозг»?
 
-## Is this a second brain?
+Он может дополнять такой инструмент, но главная цель другая.
 
-It can complement one, but its main goal is different.
+«Второй мозг» обычно отвечает на вопрос: «Как хранить и находить то, что я знаю?»
 
-A second brain usually asks: “How do I store and retrieve what I know?”
+AI Continuity Kit отвечает: «Какие знания актуальны, какие исторические, кто ими владеет и что делать дальше?»
 
-AI Continuity Kit asks: “Which knowledge is current, which is historical, who owns it, and what should happen next?”
+## Почему не сохранять каждый чат целиком?
 
-## Why not just save every chat?
+Потому что стенограммы содержат повторы, отброшенные идеи, временные детали, ошибки и заменённые решения.
 
-Because transcripts contain repetition, abandoned ideas, temporary details, errors, and superseded decisions.
+Проект предпочитает **переиспользуемую дельту**:
 
-The project prefers **reusable delta**:
-
-- confirmed decisions;
-- verified state;
+- подтверждённые решения;
+- проверенное состояние;
 - blockers;
-- exact next step;
-- useful lessons;
-- evidence pointers;
-- explicit uncertainty.
+- точный следующий шаг;
+- полезные уроки;
+- указатели на evidence;
+- явную неопределённость.
 
-## Why Markdown?
+## Почему Markdown?
 
-Because it is human-readable, easy for AI tools to consume, diffable in Git, portable, and requires no runtime dependency.
+Он читается человеком, хорошо воспринимается ИИ-инструментами, удобно сравнивается через Git, переносим и не требует отдельного runtime.
 
-Markdown is not mandatory for every data type. Live databases and external systems should remain authoritative when they are the natural owner of current structured data.
+Markdown не обязан использоваться для каждого типа данных. Live-базы и внешние системы должны оставаться каноническим owner там, где они естественно владеют текущими структурированными данными.
 
-## Why Git?
+## Почему Git?
 
-Git gives you version history, diffs, rollback, branching, and a clear record of changes.
+Git даёт историю версий, diff, rollback, ветки и ясную историю изменений.
 
-The project does not claim Git is a universal database. It is primarily a good control/documentation layer for small explicit knowledge.
+Проект не утверждает, что Git — универсальная база данных. Здесь он прежде всего удобный слой контроля и документации для небольшого объёма явных знаний.
 
-## What does “one fact, one owner” mean?
+## Что означает «один факт — один owner»?
 
-If a mutable fact has three independent “current” copies, they can drift.
+Если у изменяемого факта есть три независимые «текущие» копии, они могут разойтись.
 
-The idea is to define one canonical owner and let other places link to or summarize it.
+Идея — назначить один канонический owner, а в остальных местах давать ссылку или краткую сводку.
 
-## What is a freshness check?
+## Что такое проверка свежести?
 
-A freshness check asks whether an old fact is still trustworthy **for the current decision**.
+Это проверка, можно ли старому факту всё ещё доверять **для текущего решения**.
 
-For example, a hardware model may be stable for years. A service endpoint, DNS record, deployment status, or account balance may require a new check much sooner.
+Например, модель оборудования может быть стабильной годами. Endpoint сервиса, DNS-запись, статус deployment или баланс счёта могут потребовать свежей проверки намного раньше.
 
-## Do facts need expiration dates?
+## Нужны ли фактам сроки действия?
 
-Not necessarily.
+Не обязательно. Свежесть может зависеть от событий, а не только от времени. Повторная проверка может требоваться после deployment, migration, reboot, incident, credential rotation или другого существенного изменения.
 
-Freshness can be event-driven rather than time-driven. A fact may require recheck after a deployment, migration, reboot, incident, credential rotation, or other relevant change.
+## Проект автоматически связывает ChatGPT и Codex?
 
-## Does this automatically connect ChatGPT and Codex?
+Нет. Репозиторий — общий проверяемый слой контекста. Каждому инструменту всё равно нужен поддерживаемый способ читать нужный репозиторий и файлы в вашей среде.
 
-No. The repository is the shared, inspectable context layer. Each tool still needs a supported way to read the relevant repository/files in your environment.
+## Безопасно ли хранить здесь личные данные?
 
-## Is it safe to store personal data here?
+Публичный репозиторий — только шаблон. Реальный continuity-репозиторий обычно должен быть приватным.
 
-The public repository is only a template. Your real continuity repository should normally be private.
+Не сохраняйте в Git пароли, токены, приватные ключи, cookies, session state, конфигурации с секретами и другие учётные данные.
 
-Do not commit passwords, tokens, private keys, cookies, session state, secret-bearing configuration, or other credentials.
+## Можно ли использовать с Obsidian?
 
-## Can I use this with Obsidian?
+Да. Это обычные Markdown-файлы. Obsidian может быть удобным человеческим интерфейсом, а Git — слоем истории версий.
 
-Yes. The files are ordinary Markdown. Obsidian can be a useful human interface while Git remains the versioning layer.
+## Можно ли использовать RAG или vector database?
 
-## Can I use this with RAG or a vector database?
+Да. RAG может находить релевантный материал, а continuity-модель при этом продолжит определять owner, свежесть и различие текущего и исторического.
 
-Yes. RAG can retrieve relevant material, while the continuity model can still define ownership, freshness, and current-vs-historical meaning.
+## Не превратится ли всё в огромную бюрократию?
 
-## Will this become a huge bureaucracy?
+Не должно.
 
-It should not.
+Главное правило: **начните с Lite и добавляйте структуру только после появления реальной повторяющейся проблемы**.
 
-The design rule is: **start with Lite and add structure only after a real recurring problem appears.**
+Если система создаёт больше лишних действий, чем убирает, её нужно упростить.
 
-If the system creates more friction than it removes, simplify it.
+## Как выглядит минимальная полезная конфигурация?
 
-## What is the smallest useful setup?
-
-For many people:
+Для многих людей достаточно:
 
 ```text
 START.md
@@ -104,10 +100,10 @@ context/FACTS.md
 context/MEMORY.md
 ```
 
-Add a project only when you actually need durable project state.
+Проект добавляйте только тогда, когда действительно нужно устойчивое состояние проекта.
 
-## What should I try first?
+## Что попробовать первым?
 
-Copy [`starter/`](../starter/) into a private repository, use [`BOOTSTRAP_PROMPT.md`](../starter/BOOTSTRAP_PROMPT.md), then ask:
+Скопируйте [`starter/`](../starter/) в приватный репозиторий, используйте [`BOOTSTRAP_PROMPT.md`](../starter/BOOTSTRAP_PROMPT.md), затем спросите:
 
-> What do you know that is relevant to this request, what might be stale, and what is the next useful step?
+> Что из известного относится к этому запросу, что могло устареть и какой следующий шаг сейчас полезнее всего?

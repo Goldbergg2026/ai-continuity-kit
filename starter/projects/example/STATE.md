@@ -1,21 +1,21 @@
-# Project state — example
+# Состояние проекта — пример
 
-## Status
+## Статус
 
 `DISCOVERY`
 
-## Current position
+## Текущее положение
 
-Describe only what a new session needs to continue now.
+Опишите только то, что новой сессии необходимо знать для продолжения работы сейчас.
 
-## Blockers / risks
+## Блокеры / риски
 
-- None recorded.
+- Пока не зафиксированы.
 
-## Exact next step
+## Точный следующий шаг
 
-Define the next safe, testable action.
+Определите следующее безопасное и проверяемое действие.
 
-## Freshness
+## Свежесть
 
-State which mutable facts still need verification before action.
+Укажите, какие изменяемые факты ещё нужно проверить перед действием.
