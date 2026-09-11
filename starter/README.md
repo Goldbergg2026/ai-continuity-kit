@@ -1,26 +1,26 @@
-# Starter template
+# Starter-шаблон
 
-This folder is the smallest practical AI Continuity Kit setup.
+Эта папка — минимальная практическая конфигурация AI Continuity Kit.
 
-Copy it into a **private** repository for your own context.
+Скопируйте её в **приватный** репозиторий для собственного контекста.
 
-## What each file does
+## Назначение файлов
 
 ```text
-START.md                    entrypoint: where the assistant starts
-AGENTS.md                   global behavior and safety rules
-context/PREFERENCES.md      stable interaction preferences
-context/FACTS.md            durable reusable facts
-context/MEMORY.md           lessons and patterns, not current truth
-projects/example/STATE.md   what matters for continuing one project now
-projects/example/FACTS.md   verified project facts
-projects/example/MEMORY.md  reusable project lessons
-BOOTSTRAP_PROMPT.md         one copy-paste instruction to get started
+START.md                    точка входа: откуда ассистент начинает
+AGENTS.md                   общие правила поведения и безопасности
+context/PREFERENCES.md      устойчивые предпочтения взаимодействия
+context/FACTS.md            устойчивые переиспользуемые факты
+context/MEMORY.md           уроки и паттерны, но не текущая истина
+projects/example/STATE.md   что важно для продолжения одного проекта сейчас
+projects/example/FACTS.md   проверенные факты проекта
+projects/example/MEMORY.md  переиспользуемые уроки проекта
+BOOTSTRAP_PROMPT.md         готовая инструкция для первого запуска
 ```
 
-## Minimum setup
+## Минимальная конфигурация
 
-If you do not have a continuing project yet, you can start with only:
+Если продолжающегося проекта пока нет, достаточно:
 
 ```text
 START.md
@@ -31,25 +31,25 @@ context/MEMORY.md
 BOOTSTRAP_PROMPT.md
 ```
 
-Delete or ignore the example project until you actually need it.
+Удалите или игнорируйте пример проекта, пока он действительно не понадобится.
 
-## First 5 minutes
+## Первые 5 минут
 
-1. Create a private repository.
-2. Copy this folder's contents to its root.
-3. Put 2–5 real preferences in `context/PREFERENCES.md`.
-4. Put only a few genuinely reusable facts in `context/FACTS.md`.
-5. Leave `MEMORY.md` nearly empty until a real reusable lesson appears.
-6. Give your AI the text from `BOOTSTRAP_PROMPT.md`.
-7. Ask a normal question.
+1. Создайте приватный репозиторий.
+2. Скопируйте содержимое этой папки в его корень.
+3. Добавьте 2–5 реальных предпочтений в `context/PREFERENCES.md`.
+4. Добавьте только несколько действительно переиспользуемых фактов в `context/FACTS.md`.
+5. Оставьте `MEMORY.md` почти пустым, пока не появится реальный полезный урок.
+6. Передайте ИИ текст из `BOOTSTRAP_PROMPT.md`.
+7. Задайте обычный вопрос.
 
-## A good first test
+## Хороший первый тест
 
-Change one mutable fact and make the old value historical.
+Измените один изменяемый факт и пометьте старое значение как историческое.
 
-Then start a new session and ask the assistant which value is current and why.
+Затем начните новую сессию и спросите, какое значение актуально сейчас и почему.
 
-The system is useful when the assistant can distinguish:
+Система полезна, если ассистент различает:
 
 ```text
 CURRENT
@@ -58,14 +58,12 @@ UNKNOWN
 NEEDS RECHECK
 ```
 
-without you manually rebuilding the conversation.
+без ручного восстановления всей прежней переписки.
 
-## Do not overfill it
+## Не переполняйте репозиторий
 
-A continuity repo is not a diary dump.
+Continuity-репозиторий — не свалка дневника.
 
-Do not paste your entire chat history into `MEMORY.md`.
-Do not turn every casual idea into a project.
-Do not duplicate the same current fact in multiple places.
+Не вставляйте всю историю чатов в `MEMORY.md`. Не превращайте каждую случайную идею в проект. Не дублируйте один текущий факт в нескольких местах.
 
-Keep only what reduces future reconstruction or future error.
+Сохраняйте только то, что уменьшает будущую необходимость восстанавливать контекст или снижает риск будущей ошибки.
