@@ -1,92 +1,90 @@
-# Comparison: where AI Continuity Kit fits
+# Сравнение: место AI Continuity Kit среди других подходов
 
-AI Continuity Kit is not trying to replace every memory or knowledge tool. It is a small continuity/control layer that can sit beside them.
+AI Continuity Kit не пытается заменить все инструменты памяти и знаний. Это небольшой слой непрерывности и контроля, который может работать рядом с ними.
 
-## Quick comparison
+## Быстрое сравнение
 
-| Approach | Best at | Main question it answers | What it may not solve by itself |
+| Подход | Сильная сторона | Главный вопрос | Чего может не решать сам по себе |
 |---|---|---|---|
-| Native assistant memory | Adaptive personalization | “What should the assistant remember about me?” | Explicit ownership, project state, dated evidence, operational freshness |
-| Second brain / notes | Collecting and retrieving knowledge | “Where is what I know?” | Which mutable fact is current; what an agent may change |
-| RAG / vector database | Retrieving relevant chunks at scale | “Which stored content is semantically relevant?” | Whether the retrieved statement is still true or authorized for action |
-| Project instructions | Steering one agent inside a project | “How should this agent behave here?” | Cross-session state model, historical vs current knowledge, reusable evidence |
-| Agent framework | Tools, workflows, automation | “How does the agent execute work?” | Human-readable canonical continuity unless explicitly designed in |
-| **AI Continuity Kit** | Explicit, inspectable continuity | **“What do we know, what is current, and what may we do next?”** | Search at massive scale, autonomous execution, model hosting |
+| Нативная память ассистента | Адаптивная персонализация | «Что ассистенту стоит помнить обо мне?» | Явный owner, состояние проекта, датированные доказательства, свежесть runtime |
+| «Второй мозг» / заметки | Накопление и поиск знаний | «Где находится то, что я знаю?» | Какой изменяемый факт актуален сейчас; что агенту разрешено менять |
+| RAG / vector database | Поиск релевантных фрагментов в больших объёмах | «Какой сохранённый материал смыслово относится к запросу?» | Истинно ли найденное утверждение сейчас и разрешено ли действовать на его основе |
+| Инструкции проекта | Управление поведением одного агента в проекте | «Как агент должен работать здесь?» | Модель состояния между сессиями, история против текущего знания, повторно используемое evidence |
+| Agent framework | Инструменты, workflow и автоматизация | «Как агент выполняет работу?» | Понятная человеку каноническая непрерывность, если она не спроектирована отдельно |
+| **AI Continuity Kit** | Явная и проверяемая непрерывность | **«Что мы знаем, что актуально и что нам разрешено делать дальше?»** | Масштабный поиск, автономное выполнение, hosting модели |
 
-## Native ChatGPT-style memory
+## Нативная память ChatGPT
 
-Native memory is valuable for preferences and adaptive personal context.
+Нативная память полезна для предпочтений и адаптивного личного контекста.
 
-AI Continuity Kit adds a different property: **inspectable, versioned, explicit ownership**.
+AI Continuity Kit добавляет другое свойство: **явное, версионируемое и проверяемое владение источниками истины**.
 
-A useful split can be:
+Полезное разделение:
 
 ```text
-native memory       → adaptive personalization
-continuity repo     → explicit durable context and project state
-live system/API     → current mutable reality
+native memory       → адаптивная персонализация
+continuity repo     → явный устойчивый контекст и состояние проекта
+live system/API     → текущая изменяемая реальность
 ```
 
-The important point is not that one store is “better.” They have different jobs.
+Задача не в том, чтобы объявить одно хранилище «лучше». У них разные роли.
 
-## Second brain / Obsidian / personal wiki
+## «Второй мозг», Obsidian и личная wiki
 
-A second brain helps you accumulate and retrieve knowledge.
+«Второй мозг» помогает накапливать и находить знания.
 
-Continuity adds questions such as:
+Слой непрерывности дополнительно задаёт вопросы:
 
-- Is this note historical or current?
-- Is this value mutable?
-- What event should trigger a recheck?
-- Which file owns the current project state?
-- Is this a decision, a plan, evidence, or a lesson?
+- эта запись историческая или текущая?
+- значение может измениться?
+- какое событие должно вызвать повторную проверку?
+- какой файл владеет текущим состоянием проекта?
+- это решение, план, доказательство или урок?
 
-You can use both together.
+Оба подхода можно использовать вместе.
 
-## RAG and vector databases
+## RAG и vector database
 
-RAG is excellent when you have enough material that semantic retrieval matters.
+RAG особенно полезен, когда объём материалов уже требует смыслового поиска. Но поиск и истина — разные задачи.
 
-But retrieval and truth are different problems.
+Vector search может правильно найти старый адрес сервера, потому что он очень релевантен запросу. Слой непрерывности при этом может сказать: «значение изменяемое, поэтому перед текущим решением нужна свежая проверка».
 
-A vector search may correctly retrieve an old server address because it is highly relevant. The continuity layer can still say: “this is mutable and the current decision requires a fresh check.”
+Поэтому RAG может быть **механизмом поиска**, но не становится автоматически каноническим owner текущей истины.
 
-That makes RAG a possible **retrieval mechanism**, not automatically the canonical owner of current truth.
+## Codex и инструкции агента проекта
 
-## Codex / agent project instructions
+Инструкции проекта объясняют агенту, как работать.
 
-Project instructions tell an agent how to work.
+Слой непрерывности дополнительно может хранить:
 
-A continuity layer can additionally preserve:
-
-- current position;
-- verified facts;
-- decisions;
-- reusable lessons;
+- текущую позицию;
+- проверенные факты;
+- решения;
+- переиспользуемые уроки;
 - evidence;
 - blockers;
-- next safe step;
-- permission boundaries.
+- следующий безопасный шаг;
+- границы разрешений.
 
-This makes project instructions part of the operating model rather than the whole memory model.
+Так инструкции проекта становятся частью рабочей модели, а не всей моделью памяти.
 
-## Why Git?
+## Почему Git?
 
-Git is useful here because the content is small, text-first, inspectable, diffable, and recoverable.
+Git удобен здесь, потому что данные небольшие, текстовые, обозримые человеком, сравнимые через diff и восстанавливаемые из истории.
 
-Git is **not** automatically the right owner for every type of data. A live database, API, spreadsheet, or running system may own mutable structured state. In that case the repository should store the contract/pointer and verification rules, not a fake duplicate of the live dataset.
+Git **не обязан** быть owner каждого типа данных. Изменяемые структурированные данные могут принадлежать live-базе, API, таблице или работающей системе. Тогда репозиторий хранит contract/указатель и правила проверки, а не фальшивую копию live-данных.
 
-## The short version
+## Короткий вывод
 
-Use the tool that owns the job:
+Каждый инструмент должен владеть своей задачей:
 
 ```text
-PERSONALIZATION  → native memory when useful
-KNOWLEDGE SEARCH → notes / RAG when useful
-CURRENT REALITY  → fresh live source
-PROJECT CONTINUITY → explicit state + facts + memory + evidence
-EXECUTION        → Codex / agent / automation
-AUTHORIZATION    → explicit human/policy boundary
+PERSONALIZATION   → native memory, когда полезна
+KNOWLEDGE SEARCH  → заметки / RAG, когда полезны
+CURRENT REALITY   → свежий live-источник
+PROJECT CONTINUITY → явные state + facts + memory + evidence
+EXECUTION         → Codex / agent / automation
+AUTHORIZATION     → явная граница человека / policy
 ```
 
-AI Continuity Kit is mainly the glue that keeps these meanings from collapsing into one undifferentiated “memory.”
+AI Continuity Kit в основном служит связующим слоем, который не даёт всем этим понятиям слиться в одно неразличимое «память».
