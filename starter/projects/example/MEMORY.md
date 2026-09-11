@@ -1,5 +1,5 @@
-# Project memory — example
+# Память проекта — пример
 
-Store lessons, symptoms, pitfalls, and recovery hints that may prevent repeated work.
+Храните здесь уроки, симптомы, типовые ловушки и подсказки по recovery, которые могут предотвратить повторную работу.
 
-A memory does not prove that the same condition exists now.
+Memory не доказывает, что то же условие существует сейчас.
