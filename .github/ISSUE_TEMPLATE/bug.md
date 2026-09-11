@@ -1,15 +1,15 @@
 ---
-name: Bug
-title: "[BUG] "
-about: Report a concrete problem in the template or documentation
+name: Ошибка
+title: "[ОШИБКА] "
+about: Сообщить о конкретной проблеме в шаблоне или документации
 ---
 
-## What happened?
+## Что произошло?
 
-## What did you expect?
+## Какой результат ожидался?
 
-## Which file / workflow is involved?
+## Какой файл или workflow затронут?
 
-## Privacy check
+## Проверка конфиденциальности
 
-Remove personal data, secrets, tokens, private repository names, and private infrastructure details before submitting.
+Перед отправкой удалите личные данные, секреты, токены, названия приватных репозиториев и сведения о частной инфраструктуре.
