@@ -6,7 +6,7 @@
 
 **Лёгкий слой на Git (системе истории версий) для памяти ИИ, контекста, личных знаний и проектов, которые живут дольше одного чата.**
 
-[⚡ Старт за 5 минут](docs/QUICKSTART.ru.md) · [🧠 Базовая модель](docs/CORE_MODEL.md) · [💡 Сценарии](docs/USE_CASES.md) · [⚖️ Сравнение](docs/COMPARISON.md) · [🇬🇧 English](README.md)
+[⚡ Старт за 5 минут](docs/QUICKSTART.ru.md) · [🧠 Базовая модель](docs/CORE_MODEL.md) · [💡 Сценарии](docs/USE_CASES.md) · [⚖️ Сравнение](docs/COMPARISON.md) · [📄 Главная страница](README.md)
 
 ![Status](https://img.shields.io/badge/status-v0.2%20preview-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -14,6 +14,8 @@
 ![Privacy](https://img.shields.io/badge/personal%20data-private%20repo-important)
 
 </div>
+
+> **Основная страница проекта — [README.md](README.md).** Там актуальный статус, что готово и что сейчас проверяется. Эта страница — более короткий рассказ о проекте; при расхождении верна главная.
 
 ---
 
